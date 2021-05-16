@@ -2,24 +2,24 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
-
-profile:
-  align: right
-  image: prof_pic.jpg
-  image_cicular: false # crops the image to make it circular
-  address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
-
-news: true  # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+description: Doctoral Researcher in the Cognitive Sciences
+# profile:  
+#    align: right
+#    image: prof_pic.jpg
+# #    address: >
+# #     <p>Link 211, University of Plymouth</p>
+# #     <p>Plymouth, PL4 8AA, England</p>
+news: false  # includes a list of news items
+selected_papers: true # includes a list of papers marked as selected={true}
+social: false  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+<br>
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="lenarddome" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFDD00" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+**I am a Psychology PhD in the [Computational Modelling Lab](https://www.plymouth.ac.uk/research/psychology/brain-research-and-imaging-centre/the-computational-modelling-laboratory) at the [School of Psychology, University of Plymouth](https://www.plymouth.ac.uk/schools/psychology).**
+
+My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**.
+
+I develop software for my own research and package them as free and open-source software. The finished products are usually all-purpose implementations of the tools that I am using. If you are using anything I developed, please consider supporting me by buying me a coffee. All needs to be done is to click on the coffee icon at the right bottom corner.

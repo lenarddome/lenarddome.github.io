@@ -1,12 +1,10 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - lenarddome
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - lenarddome/psp
+  - lenarddome/pu037-sustain-ud-ii
+  - ajwills72/catlearn
+  - lenarddome/publications
+
+

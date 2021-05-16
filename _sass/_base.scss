@@ -95,7 +95,6 @@ blockquote {
 .profile {
   margin-left: 1rem;
   width: 100%;
-
   .address {
     margin-bottom: 5px;
     margin-top: 5px;
@@ -133,8 +132,14 @@ blockquote {
 
 .navbar {
   box-shadow: none;
-  border-bottom: 1px solid var(--global-divider-color);
-  background-color: var(--global-bg-color);
+  font-weight: 400;
+  font-size: 1rem;
+  // border-bottom: 1px solid var(--global-divider-color);
+  background: rgb(63,94,251);
+  background: -moz-radial-gradient(circle, rgba(63,94,251,0.7343312324929971) 0%, rgba(252,70,107,0.742734593837535) 100%);
+  background: -webkit-radial-gradient(circle, rgba(63,94,251,0.7343312324929971) 0%, rgba(252,70,107,0.742734593837535) 100%);
+  background: radial-gradient(circle, rgba(63,94,251,0.7343312324929971) 0%, rgba(252,70,107,0.742734593837535) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3f5efb",endColorstr="#fc466b",GradientType=1);
   opacity: 0.95;
 }
 .navbar .dropdown-menu {
@@ -352,18 +357,21 @@ footer.sticky-bottom {
 }
 
 .post-list {
+  font-size: 1rem;
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   padding: 0;
   li {
-    border-bottom: 1px solid var(--global-divider-color);
+    // border-bottom: 1px solid var(--global-divider-color);
     list-style: none;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 0.5rem;
     .post-meta {
       color: var(--global-text-color-light);
       font-size: 0.875rem;
       margin-bottom: 0;
+    }
+    .post-title{
+      font-weight: 700;
     }
     .post-tags {
       color: var(--global-text-color-light);
@@ -457,8 +465,10 @@ footer.sticky-bottom {
 
 // Publications
 
-.publications {
+.publications { 
+  text-align: justify;
   margin-top: 2rem;
+  font-size: 1rem;
   h1 {
     color: var(--global-theme-color);
     font-size: 2rem;
@@ -473,18 +483,17 @@ footer.sticky-bottom {
     }
   }
   h2.year {
-    color: var(--global-divider-color);
+    color: var(--global-text-color);
     border-top: 1px solid var(--global-divider-color);
     padding-top: 1rem;
     margin-top: 2rem;
     margin-bottom: -2rem;
-    text-align: right;
+    text-align: left;
   }
   ol.bibliography {
     list-style: none;
     padding: 0;
     margin-top: 0;
-
     li {
       margin-bottom: 1rem;
       .preview {
@@ -493,13 +502,17 @@ footer.sticky-bottom {
         max-width: 200px;
       }
       .abbr {
+        font-size: 1.25rem;
         height: 2rem;
         margin-bottom: 0.5rem;
+        text-align: right;
         abbr {
           display: inline-block;
           background-color: var(--global-theme-color);
           padding-left: 1rem;
-          padding-right: 1rem;
+          padding-right: 0.5rem;
+          padding-top: 0.25rem;
+          padding-bottom: 0.25rem;
           a {
             color: white;
             &:hover {
@@ -524,7 +537,8 @@ footer.sticky-bottom {
           }
         }
         > em {
-          border-bottom: 1px solid;
+          border-bottom: 1px dashed;
+          font-weight: 900;
           font-style: normal;
         }
         > span.more-authors {
@@ -539,10 +553,13 @@ footer.sticky-bottom {
       }
       .links {
         a.btn {
-          color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
+          font-weight: 500;
+          color: white;
+          background-color: #222122;
+          border: 1px solid var(--global-text-color-light);
+          border-radius: 15px;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
           padding-top: 0.25rem;
           padding-bottom: 0.25rem;
           &:hover {
@@ -625,7 +642,9 @@ html.transition *:after {
 }
 
 // Extra Markdown style (post Customization)
-.post{
+.post {
+  text-align: justify;
+  font-size: 1.125rem;
   .post-meta{
     color: var(--global-text-color-light);
     font-size: 0.875rem;
