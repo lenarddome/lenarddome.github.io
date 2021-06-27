@@ -232,7 +232,7 @@ footer.sticky-bottom {
   border-bottom: 1px solid $grey-color-light;
   text-align: center;
   padding-top: 2rem;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
   h1 {
     color: var(--global-theme-color);
     font-size: 5rem;
@@ -353,6 +353,9 @@ footer.sticky-bottom {
 
 .publications {
   margin-top: 2rem;
+  i {
+    font-size: 1.25rem;
+  }
   h1 {
     color: var(--global-theme-color);
     font-size: 2rem;
@@ -367,12 +370,12 @@ footer.sticky-bottom {
     }
   }
   h2.year {
-    color: $grey-color-light;
+    color: $grey-color;
     border-top: 1px solid $grey-color-light;
-    padding-top: 1rem;
-    margin-top: 2rem;
-    margin-bottom: -2rem;
-    text-align: right;
+    padding-top: 0.5rem;
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    text-align: left;
   }
   ol.bibliography {
     list-style: none;
@@ -382,8 +385,9 @@ footer.sticky-bottom {
     li {
       margin-bottom: 1rem;
       .abbr {
+        font-size: 18px;
         height: 2rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0rem;
         abbr {
           display: inline-block;
           background-color: var(--global-theme-color);
@@ -413,7 +417,7 @@ footer.sticky-bottom {
           }
         }
         > em {
-          border-bottom: 1px solid;
+          border-bottom: 1px dotted;
           font-style: normal;
         }
       }
@@ -505,7 +509,7 @@ code {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 2px 1px;
     cursor: pointer;
@@ -521,7 +525,7 @@ code {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 2px 1px;
     cursor: pointer;
@@ -537,7 +541,7 @@ code {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 2px 1px;
     cursor: pointer;
@@ -553,7 +557,7 @@ code {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 2px 1px;
     cursor: pointer;
@@ -569,7 +573,7 @@ code {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 2px 1px;
     cursor: pointer;
@@ -585,13 +589,12 @@ code {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 2px 1px;
     cursor: pointer;
     border-radius: 5px;
 }
-
 
 // Transitioning Themes
 html.transition,
@@ -601,3 +604,4 @@ html.transition *:after {
   transition: all 750ms !important;
   transition-delay: 0 !important;
 }
+

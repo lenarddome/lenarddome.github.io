@@ -1,10 +1,10 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
-img: /assets/img/12.jpg
+title: trackmylife
+description: looking at my life through data
+img: /assets/img/projects_fredy-jacob-t0SlmanfFcg-unsplash.jpg
 importance: 1
-category: work
+category: fun
 ---
 
 Every project has a beautiful feature showcase page.

@@ -7,11 +7,9 @@ first_name: Lenard
 last_name: Dome
 email: lenard.dome@plymouth.ac.uk
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 
 icon: 🔥 # the emoji used as the favicon
 url:  # the base hostname & protocol for your site
@@ -66,8 +64,8 @@ panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: cognitive motherboard # your blog must have a name for it to show up in the nav bar
-blog_description:  musings, tutorials, essays
+blog_name: track_my.life # your blog must have a name for it to show up in the nav bar
+blog_description:  introspections, essays, analysis of my life
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -90,6 +88,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  software:
+    output: true
+    permalink: /software/:path/
 
 news_limit: 5
 
@@ -149,7 +150,7 @@ scholar:
 
   source: /_bibliography/
   bibliography: papers.bib
-  bibliography_template: bib_alternative
+  bibliography_template: bib
 
   replace_strings: true
   join_strings: true
