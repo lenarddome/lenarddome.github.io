@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: psp [aut, cre] 
 description:  Implements a parameter space partitioning algorithm for evaluating the global behaviour of computational models as described by Pitt, Kim, Navarro and Myung (2006)
 img: /assets/img/software_markus-spiske-cvBBO4PzWPg-unsplash.jpg
@@ -15,7 +15,7 @@ category: cognitive-science
 
 <br>
 
-{% twitter https://twitter.com/lenarddome/status/1407269362667560960?s=20 maxwidth=800 align=center %}
+{% twitter https://twitter.com/lenarddome/status/1407269362667560960?s=20 align=center %}
 
 <br>
 
@@ -59,7 +59,7 @@ does not predict the phenomenon under the given conditions, but we observed it
 under said conditions.
 
 This is the key features of formal models: they allow us to unambiguously
-assess whether a certain instantiation of a theory can capture a phenomenon.
+assess whether a certain instantiation of a theory can capture a phenomenon [Wills & Pothos, 2012](https://www.andywills.info/assets/pdf/2012willspothos.pdf).
 We usually do this post-hoc (after the data has been analysed). We apply
 some fitting technique to try to adapt the parameters of the model, so that
 the model mimics human behaviour as close as possible.
@@ -93,7 +93,7 @@ It can also tell us how big of a chunk a certain pattern makes up
 in its behaviour (default behaviour vs. rare behaviour).
 
 Another useful feature of PSP is that it allows to explore the whole parameter
-space. All models will exhibit unexpected, erratic, unreliable and erroneous
+space. All models will exhibit unexpected and unreliable 
 behaviour if the parameters fall outside of certain bounds. It is also somewhat
 problematic for implementations, as some functions like exponential functions
 can easily get out of hand. Authors rarely provide a lower and upper bound
@@ -177,14 +177,11 @@ model <- function(par) {
 
 ### SIMULATION
 
-First, we should load the package.
-
 ```r
 library(psp)
 ```
 
-
-Then we can let psp do its job. 
+Now we can let psp do its job. 
 Here we run the MCMC for 400 iterations, but the partitioning
 will stop if the population of all regions reach 300.
 Note that we have to load our utility function into
@@ -234,6 +231,14 @@ happens according to geometry.
 The question is what we can do with the output now? A simple next step could
 be **calculating volume of the regions**.
 
+Alternatively, you can try to discover clusters of points in the parameter space
+within regions and ordinal patterns. There might be many ways a model might behave
+but still outputs the same result.
+
+You can compare how many different qualitative outputs the model produces and
+how many of those have been observed in humans. You might also try to figure out
+when unobserved qualitative outputs occur according to the model.
+
 ## NOTES FOR THE CURIOUS
 
 I had some thoughts while trying to implement the algorithm. Turns out,
@@ -254,7 +259,9 @@ burn-in is unnecessary.
 
 I am also not sure why burn-in is necessary for parameter space partitioning.
 It seems counter-intuitive to discard areas you explored in the parameter space
-if you'd like to explore said parameter space.
+if you'd like to explore said parameter space. Here we have no target to reach
+other than to fill in the whole space - unlike scenarios where you want
+to optimize some point estimate like the mean of a distribution
 
 One problem we might encounter is that *regions further away from our starting
 jumping distribution will be under-sampled*. This could be avoided by increasing the number
