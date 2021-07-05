@@ -19,6 +19,8 @@ category: cognitive-science
 
 <br>
 
+2021-07-05T09:55:05+0100: THIS MANUAL IS IN DEVELOPMENT
+
 ## CODE DEVELOPMENT
 
 A big influence on this implementation is an instantiation of the Open Models
@@ -44,6 +46,7 @@ on the package. His post makes some good points about the essence of parameter
 space partitioning, but I thought that I would reiterate and elaborate on some
 of his points here and provide a manual.
 
+Let us start from the beginning.
 Formal models are theories that we have specified by  using some formal language like
 maths [(Guest & Martin, 2021)](https://doi.org/10.1177/1745691620970585).
 These models also need to be implemented (programmed), which builds another layer
@@ -51,37 +54,37 @@ of assumptions as a result of engineering work [(Cooper & Guest, 2014)](https://
 
 There could be many specification of a single theory and multiple implementations
 of a single specification.
-The take-away message is that formal models describe theories and allow us to
+The point here is that formal models describe theories and allow us to
 formally generate a prediction of a given theory with high degree of precision.
 If a model cannot capture a phenomenon observed under certain conditions, but
 was designed to explain the phenomenon itself, we can say the model failed - it
 does not predict the phenomenon under the given conditions, but we observed it
 under said conditions.
 
-This is the key features of formal models: they allow us to unambiguously
-assess whether a certain instantiation of a theory can capture a phenomenon [Wills & Pothos, 2012](https://www.andywills.info/assets/pdf/2012willspothos.pdf).
+This is the key feature of formal models: they allow us to unambiguously
+assess whether a certain instantiation of a theory can capture a phenomenon [(Wills & Pothos, 2012)](https://www.andywills.info/assets/pdf/2012willspothos.pdf).
 We usually do this post-hoc (after the data has been analysed). We apply
 some fitting technique to try to adapt the parameters of the model, so that
 the model mimics human behaviour as close as possible.
 
-This approach has some limits. 
-[Roberts and Pashler (2000)](https://psycnet.apa.org/doi/10.1037/0033-295X.107.2.358)
-rightly points out three weighty limits of a goodness-of-fit approach:
-
-1. A good fit **does not tell us what the theory predicts.**
-2. Between-subject variability is not explained by a good fit.
-3. A priori likelihood that the theory will fit. **It matters that the plausible outcomes are a small fraction of all possible outcomes.**
-
-These parameters will change its behaviour in some sense, so we have to find
+The parameters will change the model's behaviour in some sense, so we have to find
 the ones which reproduce human behaviour as close as possible. 
 The model's behaviour will depend on not just what are the psychological processes
 that it specifies, but also what parameters we give it, how those parameters
 interact, and how those parameters tune the behaviour of
 the model in a given experiment.
 
+This goodness-of-fit approach has some limits. 
+[Roberts and Pashler (2000)](https://psycnet.apa.org/doi/10.1037/0033-295X.107.2.358)
+rightly points out three limits of a goodness-of-fit approach:
+
+1. A good fit **does not tell us what the theory predicts.**
+2. Between-subject variability is not explained by a good fit.
+3. A priori likelihood that the theory will fit. **It matters that the plausible outcomes are a small fraction of all possible outcomes.**
+
 This means that **models predict multiple things**. That is the point of psp -
-even in the same experiment, **models predict more than one thing. And we should
-know what the model, which a formalization of a certain theory, predicts.**
+even in the same experiment, **models predict more than one thing. We should
+probably know what the model (a formalization of a certain theory) predicts.**
 In my belief, that is how we should test whether the way we understand the
 world accurately represents the word itself.
 
