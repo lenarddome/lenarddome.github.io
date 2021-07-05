@@ -17,7 +17,7 @@ layout: default
             {%- if page.profile.image %}
               {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-              {% if page.profile.image_cicular %}
+              {% if page.profile.image_circular %}
                 {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
               {% else %}
                 {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
@@ -42,7 +42,7 @@ layout: default
 
           {% if page.news -%}
           <!-- News -->
-          {%- include news.html %}
+            {%- include news.html %}
           {%- endif %}
           {% if page.selected_papers -%}
             <!-- Selected papers -->
@@ -55,7 +55,6 @@ layout: default
             {% include social.html %}
             </div>
 
-<<<<<<< HEAD
             <div class="contact-note">
               {{ site.contact_note }}
             </div>
@@ -63,8 +62,5 @@ layout: default
           </div>
           {%- endif %}
         </article>
-=======
-  </article>
->>>>>>> f0320ea (personalize and add pubs)
 
 </div>
