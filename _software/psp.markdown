@@ -1,6 +1,6 @@
 ---
 layout: post
-title: psp [aut, cre] 
+title: psp [aut, cre]
 description:  Implements a parameter space partitioning algorithm for evaluating the global behaviour of computational models as described by Pitt, Kim, Navarro and Myung (2006)
 img: /assets/img/software_markus-spiske-cvBBO4PzWPg-unsplash.jpg
 importance: 1
@@ -15,7 +15,7 @@ category: cognitive-science
 
 <br>
 
-{% twitter https://twitter.com/lenarddome/status/1407269362667560960?s=20 align=center %}
+<blockquote class="twitter-tweet" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">My first <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/rpackage?src=hash&amp;ref_src=twsrc%5Etfw">#rpackage</a> is out on CRAN!<br>The package implements a global qualitative <a href="https://twitter.com/hashtag/modelevaluation?src=hash&amp;ref_src=twsrc%5Etfw">#modelevaluation</a><br>tool as described by Pitt, Kim, Navarro and Myung (2006). It also works in n dimensions. :)<a href="https://t.co/XFVyyNgUoi">https://t.co/XFVyyNgUoi</a><br><br>Give it a whirl with install.packages(&quot;psp&quot;)!</p>&mdash; Lénárd Döme (@lenarddome) <a href="https://twitter.com/lenarddome/status/1407269362667560960?ref_src=twsrc%5Etfw">June 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <br>
 
@@ -37,79 +37,17 @@ We are completely open-source and free. Anyone can contribute. If you would
 like to raise an issue or contribute code, use Github, message or email me
 (@lenarddome).
 
-## FORMAL MODELLING PHILOSOPHY
-
 **There is a great and concise [blog post](https://www.andywills.info/2021-06-23-psp/)
 about it by [Andy Wills](https://www.andywills.info/)**, who helped me quite a bit
 in understanding what psp is and how it works. He is also an author
-on the package. His post makes some good points about the essence of parameter
-space partitioning, but I thought that I would reiterate and elaborate on some
-of his points here and provide a manual.
-
-Let us start from the beginning.
-Formal models are theories that we have specified by  using some formal language like
-maths [(Guest & Martin, 2021)](https://doi.org/10.1177/1745691620970585).
-These models also need to be implemented (programmed), which builds another layer
-of assumptions as a result of engineering work [(Cooper & Guest, 2014)](https://doi.org/10.1016/j.cogsys.2013.05.001).
-
-There could be many specification of a single theory and multiple implementations
-of a single specification.
-The point here is that formal models describe theories and allow us to
-formally generate a prediction of a given theory with high degree of precision.
-If a model cannot capture a phenomenon observed under certain conditions, but
-was designed to explain the phenomenon itself, we can say the model failed - it
-does not predict the phenomenon under the given conditions, but we observed it
-under said conditions.
-
-This is the key feature of formal models: they allow us to unambiguously
-assess whether a certain instantiation of a theory can capture a phenomenon [(Wills & Pothos, 2012)](https://www.andywills.info/assets/pdf/2012willspothos.pdf).
-We usually do this post-hoc (after the data has been analysed). We apply
-some fitting technique to try to adapt the parameters of the model, so that
-the model mimics human behaviour as close as possible.
-
-The parameters will change the model's behaviour in some sense, so we have to find
-the ones which reproduce human behaviour as close as possible. 
-The model's behaviour will depend on not just what are the psychological processes
-that it specifies, but also what parameters we give it, how those parameters
-interact, and how those parameters tune the behaviour of
-the model in a given experiment.
-
-This goodness-of-fit approach has some limits. 
-[Roberts and Pashler (2000)](https://psycnet.apa.org/doi/10.1037/0033-295X.107.2.358)
-rightly points out three limits of a goodness-of-fit approach:
-
-1. A good fit **does not tell us what the theory predicts.**
-2. Between-subject variability is not explained by a good fit.
-3. A priori likelihood that the theory will fit. **It matters that the plausible outcomes are a small fraction of all possible outcomes.**
-
-This means that **models predict multiple things**. That is the point of psp -
-even in the same experiment, **models predict more than one thing. We should
-probably know what the model (a formalization of a certain theory) predicts.**
-In my belief, that is how we should test whether the way we understand the
-world accurately represents the word itself.
-
-PSP allows us not only to find these predictions, but also to understand
-how the model produces them, what behaviour of a model leads to a certain
-prediction, how many different ways a model's behaviour results in the same
-prediction.
-It can also tell us how big of a chunk a certain pattern makes up
-in its behaviour (default behaviour vs. rare behaviour).
-
-Another useful feature of PSP is that it allows to explore the whole parameter
-space. All models will exhibit unexpected and unreliable 
-behaviour if the parameters fall outside of certain bounds. It is also somewhat
-problematic for implementations, as some functions like exponential functions
-can easily get out of hand. Authors rarely provide a lower and upper bound
-for all parameters in a given model. Parameter space partitioning allows us
-to determine those boundaries efficiently.
-
-## EXAMPLE
+on the package. His post makes some great points about the essence of parameter
+space partitioning. I thought that I would complement that post with a
+non-exhaustive manual.
 
 In the remainder of this post, I will walk through the steps of using `psp`.
-This walk-through will use a two parameter model. PSP will need to find 10 distinct
-regions.
+This walk-through will use a two parameter model. PSP will need to find 10 distinct regions.
 
-### INSTALL
+## INSTALL
 
 For the stable version:
 
@@ -124,7 +62,7 @@ devtools::install_github("lenarddome/psp")
 ```
 
 
-### MODEL
+## MODEL
 
 Then we put together a model (essentially a model of a polytope), that
 calculates the euclidean distance from a selected number of points. These
@@ -143,7 +81,7 @@ where the space is uniformly partitioned.
 #' @return euclidean distance between coordinates
 euclidean <- function(a, b) sqrt(sum((a - b)^2))
 
-# define center points for the 10 regions in a two-dimensional space 
+# define center points for the 10 regions in a two-dimensional space
 positions <- NULL
 for (i in seq_len(2)) positions <- cbind(positions, sample(500, 10))
 ```
@@ -164,12 +102,12 @@ It can also be a Boolean, or integers, but I am yet to test it with those.
 #' @examples
 #' model(runif(5))
 model <- function(par) {
-    areas <- NULL 
+    areas <- NULL
     for (i in seq_along(par)) {
         range <- c(1, 0)
         if (i %% 2 == 0) {
             range <- c(0, 1)
-        } 
+        }
         areas <- cbind(areas,
                        seq(range[1], range[2], length.out = 500)[positions[,i]])
     }
@@ -178,13 +116,13 @@ model <- function(par) {
 }
 ```
 
-### SIMULATION
+## SIMULATION
 
 ```r
 library(psp)
 ```
 
-Now we can let psp do its job. 
+Now we can let psp do its job.
 Here we run the MCMC for 400 iterations, but the partitioning
 will stop if the population of all regions reach 300.
 Note that we have to load our utility function into
@@ -227,16 +165,19 @@ Each colour is a separate region.
 
 ### AMAZING, BUT WHAT NOW?
 
-This was a simple model bearing no relevance to psychology - unless you are
+This was a simple model bearing no psychological commitment - unless you are
 one of the few believing that the brain has a geometry module or that learning
-happens according to geometry.
+happens according to laws of geometry.
 
 The question is what we can do with the output now? A simple next step could
-be **calculating volume of the regions**.
+be **calculating volume of the regions**. Behaviours that occupy large regions
+in the parameter space might be more frequent behaviours, therefore might need
+more of our attentiont. Maybe the behaviour with the largest region is something
+that we haven't even observed yet.
 
 Alternatively, you can try to discover clusters of points in the parameter space
-within regions and ordinal patterns. There might be many ways a model might behave
-but still outputs the same result.
+within regions and ordinal patterns. There might be many ways a model might
+operate but still outputs the same result.
 
 You can compare how many different qualitative outputs the model produces and
 how many of those have been observed in humans. You might also try to figure out
