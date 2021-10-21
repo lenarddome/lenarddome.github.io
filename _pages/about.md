@@ -4,9 +4,12 @@ title: about
 permalink: /
 description: Doctoral Student in the Cognitive Sciences
 
-profile:
+profile:  
   align: right
   image: prof_pic.jpg
+  address: >
+   <p>Link 211, University of Plymouth</p>
+   <p>Plymouth, PL4 8AA, England</p>
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as selected={true}
 social: true  # includes social icons at the bottom of the page
@@ -16,6 +19,4 @@ social: true  # includes social icons at the bottom of the page
 
 ## My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**.
 
-My second line of work looks at contingency learning, memory and visual search, mostly from a formal modelling and theory building point-of-view. On the sidelines, I code, read, listen to music, obsess with cinema and analyse every data I could collect about my life.
-
-[<i class="ai ai-cv ai-3x"></i>](/assets/pdf/cv.pdf)
+My second line of work looks at contingency learning and memory mostly from a formal modelling and theory building point-of-view. On the sidelines, I code, read, listen to music, obsess with cinema and analyse every data I could collect about my life.
