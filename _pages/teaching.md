@@ -6,6 +6,6 @@ description: Materials for courses you taught. Replace this text with your descr
 nav: true
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+## Research Methods
 
-Organize your courses by years, topics, or universities, however you like!
+* **[Estimating Sample size with Bayes Factors](https://www.andywills.info/rminr/power-bayesian.html)** is an accessible introduction to estimating sample sizes with Bayes Factors via a Monte Carlo simulation. It is essentially a worksheet worht a chapter in a textbook. The worksheet is developed for final year undergraduates at Plymouth. These sessions usually include a teaching staff present to assist student. This material is part of [RMINR](https://www.andywills.info/rminr) curated by [Andy Wills](https://www.andywills.info/).
