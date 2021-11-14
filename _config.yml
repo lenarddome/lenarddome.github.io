@@ -45,7 +45,7 @@ gitlab_username: # your GitLab user name
 twitter_username: lenarddome # your Twitter handle
 linkedin_username: # your LinkedIn user name
 scholar_userid: NNXkqkEAAAAJ # your Google Scholar ID
-orcid_id: # your ORCID ID
+orcid_id: 0000-0001-7487-1974 # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
@@ -91,6 +91,10 @@ collections:
   software:
     output: true
     permalink: /software/:path/
+  teaching:
+    output: true
+    permalink: /teaching/:path/
+
 
 news_limit: 5
 
@@ -171,7 +175,7 @@ enable_mansory:             true   # enables automatic project cards arangement
 enable_math:                true   # enables math typesetting (uses MathJax)
 enable_tooltips:            false  # enables automatic tooltip links generated
                                    # for each section titles on pages and posts
-enable_darkmode:            true   # enables switching between light/dark modes
+enable_darkmode:            false   # enables switching between light/dark modes
 enable_navbar_social:       true  # enables displaying social links in the
                                    # navbar on the about page
 enable_project_categories:  true   # enables categorization of projects into

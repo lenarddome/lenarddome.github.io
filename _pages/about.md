@@ -17,6 +17,17 @@ social: true  # includes social icons at the bottom of the page
 
 ## **I am a Psychology PhD in [Willslab](https://www.andywills.info/) at [School of Psychology, University of Plymouth](https://www.plymouth.ac.uk/schools/psychology).**
 
-## My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**.
+##### My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**.
 
-My second line of work looks at contingency learning and memory mostly from a formal modelling and theory building point-of-view. On the sidelines, I code, read, listen to music, obsess with cinema and analyse every data I could collect about my life.
+##### I develop software for my own research and package them as free and open-source software. The finished products are usually all-purpose implementations of the tools that I am using, so everyone can make use of them in their own research. If you are using anything I developed, please consider buying me a coffee. Code is made from coffee after all ☕
+
+<p>
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="lenarddome" data-color="#FFDD00" data-emoji=""  data-font="Poppins" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
+<br>
+
+<a href="https://coindrop.to/lenarddome" target="_blank"><img src="https://coindrop.to/embed-button.png" style="border-radius: 10px; height: 57px !important;width: 229px !important;" alt="Coindrop.to me"></a>
+
+
+
+</p>
