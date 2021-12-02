@@ -19,7 +19,8 @@ category: cognitive-science
 
 <br>
 
-2021-07-05T09:55:05+0100: THIS MANUAL IS IN DEVELOPMENT
+This is a brief manual for those without time. A more extensive introduction is
+in the works and will be hosted on the Project's GitHub Wiki.
 
 ## CODE DEVELOPMENT
 
@@ -159,9 +160,14 @@ to what the model predicted.
 
 This is how it looks under the hood in real time:
 
-<iframe width="800" height="600" src="https://www.youtube.com/embed/xkfKJO2ViWI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/548351899?h=097ecfdea2" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 Each colour is a separate region.
+
+Admittedly, this is a very simple use-case. Below is a more apt illustration of
+what `psp` is doing behind the scenes for a 3D polytope model:
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/652405415?h=ffafca4001" width="640" height="426" frameborder="0" allowfullscreen></iframe>
 
 ### AMAZING, BUT WHAT NOW?
 
