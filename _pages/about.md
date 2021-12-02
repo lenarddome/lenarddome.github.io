@@ -15,7 +15,7 @@ selected_papers: true # includes a list of papers marked as selected={true}
 social: true  # includes social icons at the bottom of the page
 ---
 
-## **I am a Psychology PhD in [Willslab](https://www.andywills.info/) at [School of Psychology, University of Plymouth](https://www.plymouth.ac.uk/schools/psychology).**
+## **I am a Psychology PhD in the [Computational Modelling Laboratory](https://www.plymouth.ac.uk/research/psychology/brain-research-and-imaging-centre/the-computational-modelling-laboratory) at the [Brain Research and Imaging Centre](https://www.plymouth.ac.uk/research/psychology/brain-research-and-imaging-centre) which is part of the [School of Psychology, University of Plymouth](https://www.plymouth.ac.uk/schools/psychology).**
 
 ##### My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**.
 
@@ -27,7 +27,5 @@ social: true  # includes social icons at the bottom of the page
 <br>
 
 <a href="https://coindrop.to/lenarddome" target="_blank"><img src="https://coindrop.to/embed-button.png" style="border-radius: 10px; height: 57px !important;width: 229px !important;" alt="Coindrop.to me"></a>
-
-
 
 </p>
