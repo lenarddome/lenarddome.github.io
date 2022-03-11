@@ -4,8 +4,8 @@ title: resources
 permalink: /resources/
 description: Manuals and tutorials on using various softwares, analysis techniques and anything weird or insteresting.
 nav: true
-display_categories: [manual, tutorial, snippets]
-horizontal: false
+display_categories: [tutorial, snippets]
+horizontal: true
 ---
 
 <div class="projects">
