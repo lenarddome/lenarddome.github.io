@@ -2,13 +2,55 @@
 layout: page
 title: teaching
 permalink: /teaching/
-description: Collection of teaching materials I use.
+description: Collection of Creative Commons teaching resources I developed and maintain.
 nav: true
 ---
 
-Roles: ◐ content creator ⊕ contributor ⌂ delivery
+<div class="projects">
+  {% if site.enable_project_categories and page.display_categories %}
+  <!-- Display categorized projects -->
+    {% for category in page.display_categories %}
+      <h2 class="category">{{category}}</h2>
+      {% assign categorized_projects = site.teaching | where: "category", category %}
+      {% assign sorted_projects = categorized_projects | sort: "importance" %}
+      <!-- Generate cards for each project -->
+      {% if page.horizontal %}
+        <div class="container">
+          <div class="row row-cols-2">
+          {% for project in sorted_projects %}
+            {% include projects_horizontal.html %}
+          {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="grid">
+          {% for project in sorted_projects %}
+            {% include projects.html %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
 
-* ◐ ⌂ [[worksheet](https://www.andywills.info/rminr/power-bayesian.html)] [[slides]()] **Estimating Sample Size with Bayes Factors**: _This worksheet is a user-friendly and hands-on introduction on how to estimate sample sizes with a combination of Bayes Factor and Monte Carlo methods_
-* ⊕ ⌂ [[worksheet](https://www.andywills.info/rminr/better-tables.html)] [[slides](https://lenarddome.github.io/better-graphs-tables/)] **Better Tables**: correlation matrix, custom table of descriptive statistics. An [RMINR](https://www.andywills.info/rminr) resource.
-* ⊕ ⌂ [[worksheet](https://www.andywills.info/rminr/better-graphs.html)] [[slides](https://lenarddome.github.io/better-graphs-tables/)] **Better Graphs**: publication-quality graphs showing both central tendency and variability (or uncertainty) of your data. Discussion of common bad plots to avoid (bar plots; confusions over confidence intervals). Pairs plot for correlational designs.An [RMINR](https://www.andywills.info/rminr) resource
-* ◐ ⌂ [[slides](https://lenarddome.github.io/dclin-stats/)] [[github](https://github.com/lenarddome/dclin-stats)] **Introduction to Quantitative Analysis with R**: This is a half-day session (4 - 5 hours) aimed at Doctoral Clinical Psychology students. The session walks students through the main steps of quantitative analysis with R - using Andy Wills' [A Very Brief Guide to R](https://www.andywills.info/rminr/#vbgtr).
+  {% else %}
+  <!-- Display projects without categories -->
+    {% assign sorted_projects = site.teaching | sort: "importance" %}
+    <!-- Generate cards for each project -->
+    {% if page.horizontal %}
+      <div class="container">
+        <div class="row row-cols-2">
+        {% for project in sorted_projects %}
+          {% include projects_hrz.html %}
+        {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <div class="grid">
+        {% for project in sorted_projects %}
+          {% include projects.html %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+</div>

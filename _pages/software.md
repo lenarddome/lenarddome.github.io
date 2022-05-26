@@ -4,9 +4,11 @@ title: software
 permalink: /software/
 description: I build software for research and data analysis.
 nav: true
-display_categories: [cognitive-science]
 horizontal: false
 ---
+
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="lenarddome" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFDD00" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
 <div class="projects">
   {% if site.enable_project_categories and page.display_categories %}
   <!-- Display categorized projects -->

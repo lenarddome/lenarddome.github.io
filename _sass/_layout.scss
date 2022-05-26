@@ -10,7 +10,7 @@
 
  body.fixed-top-nav {
    // Add some padding for the nav-bar.
-   padding-top: 56px;
+   padding-top: 66px;
  }
 
  body.sticky-bottom-footer {
@@ -24,6 +24,7 @@
 
 // Profile
 .profile {
+  max-width: 960px;
   img {
     width: 100%;
   }
