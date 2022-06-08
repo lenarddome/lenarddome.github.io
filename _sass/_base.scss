@@ -44,7 +44,7 @@ a, table.table a {
 // Profile
 
 .profile {
-  margin-left: 1rem;
+  margin-left: 2rem;
   margin-right: 1rem;
   width: 100%;
 
@@ -62,6 +62,7 @@ a, table.table a {
 
 @media (min-width: 576px) {
   .profile {
+    margin-left: 2rem;
     width: 30%;
     .address {
       p { display: block; }
