@@ -45,8 +45,8 @@ a, table.table a {
 
 .profile {
   margin-left: 2rem;
-  margin-right: 1rem;
-  width: 100%;
+  margin-right: 2rem;
+  width: 90%;
 
   .address {
     margin-bottom: 5px;
@@ -71,7 +71,7 @@ a, table.table a {
 }
 
 .post {
-  font-size: 1.00rem;
+  font-size: 1.50rem;
   margin: auto;
 }
 
@@ -326,7 +326,7 @@ footer.sticky-bottom {
   }
 
   .grid-item {
-    width: 350px;
+    width: 400px;
     margin-bottom: 10px;
 
     a {
@@ -377,7 +377,7 @@ footer.sticky-bottom {
     }
   }
   h2.year {
-    color: $grey-color;
+    color: $grey-color-dark;
     border-top: 1px solid $grey-color-light;
     padding-top: 0.5rem;
     margin-top: 0rem;
@@ -386,6 +386,7 @@ footer.sticky-bottom {
   }
   ol.bibliography {
     list-style: none;
+    color: $grey-color-dark;
     padding: 0;
     margin-top: 0;
 
