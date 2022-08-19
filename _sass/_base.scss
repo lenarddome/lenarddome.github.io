@@ -63,7 +63,8 @@ a, table.table a {
 @media (min-width: 576px) {
   .profile {
     margin-left: 2rem;
-    width: 30%;
+    width: 40%;
+
     .address {
       p { display: block; }
     }
@@ -91,7 +92,7 @@ a, table.table a {
 // Navbar customization
 
 .navbar {
-  box-shadow: none;
+  box-shadow: 10px;
   border-bottom: 1px dotted $grey-color-dark;
   background-color: var(--global-bg-color);
   opacity: 1;
@@ -103,28 +104,39 @@ a, table.table a {
     }
   }
   .navbar-brand {
-    color: var(--global-text-color);
+    color: black;
     font-size: 1.5rem;
   }
   .navbar-nav .nav-item .nav-link {
-    color: var(--global-text-color);
+    font-weight: 400;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 00.5em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    margin-bottom: 0.25em;
+    transition-duration: 0.4s;
+    color: white;
     font-size: 1.250rem;
+    background-color: #ff1744;
     &:hover {
-      color: var(--global-hover-color);
+      color: black;
+      background-color: white;
+      box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
   }
   .navbar-nav .nav-item.active>.nav-link {
-      background-color: inherit;
+      background-color: #ff8a80;
       font-weight: bolder;
-      color: var(--global-theme-color);
+      color: black;
       &:hover {
-        color: var(--global-hover-color);
+        color: white;
       }
   }
   .navbar-brand.social {
     padding-bottom: 0;
     padding-top: 0;
-    font-size: 1.75rem;
+    font-size: 2rem;
     a {
       i::before {
         color: var(--global-text-color);
