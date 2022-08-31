@@ -44,3 +44,32 @@ function toggleBibtex{{entry.key}}(parameter) {
     }
 }
 </script>
+
+## new stuff
+
+{% if entry.doi %}
+<a href="https://doi.org/{{ entry.doi }}"><i class="ai ai-doi"></i></a>
+{% endif %}
+{% if entry.arxiv %}
+<i class="ai ai-arxiv"></i>
+{% endif %}
+{% if entry.psyarxiv %}
+<i class="ai ai-psyarxiv"></i>
+{% endif %}
+{% if entry.pdf %}
+{% if entry.pdf contains '://' %}
+<a href="{{ entry.pdf }}"><i class="fas fa-file-pdf"></i></a>
+{% else %}
+<a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}"><i class="fas fa-file-pdf"></i></a>
+{% endif %}
+{% endif %}
+{% if entry.osf %}
+<a href="{{ entry.osf }}"><i class="ai ai-osf"></i></a>
+{% endif %}
+{% if entry.figshare %}
+<a href="{{ entry.figshare }}"><i class="ai ai-figshare"></i></a>
+{% endif %}
+{% if entry.github %}
+<a href="{{ entry.github }}"><i class="fab fa-github"></i></a>
+{% endif %}
+</div>
