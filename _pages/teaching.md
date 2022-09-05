@@ -39,7 +39,7 @@ nav: true
       <div class="container">
         <div class="row row-cols-2">
         {% for project in sorted_projects %}
-          {% include projects_hrz.html %}
+          {% include projects_horizontal.html %}
         {% endfor %}
         </div>
       </div>

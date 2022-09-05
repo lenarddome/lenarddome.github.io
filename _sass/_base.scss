@@ -47,12 +47,12 @@ a, table.table a {
   margin-left: 2rem;
   margin-right: 2rem;
   width: 90%;
-  font-size: 5rem;
+  font-size: 4rem;
   .address {
     margin-bottom: 5px;
     margin-top: 5px;
     font-family: monospace;
-    font-size: 1rem;
+    font-size: 1.25rem;
     text-align: center;
     p {
       display: inline-block;
@@ -73,7 +73,7 @@ a, table.table a {
 @media (min-width: 576px) {
   .profile {
     margin-left: 2rem;
-    width: 40%;
+    width: 50%;
 
     .address {
       p { display: block; }
@@ -83,7 +83,10 @@ a, table.table a {
 
 .post {
   font-size: 1.25rem;
+  line-height: normal;
   margin: auto;
+  text-align: justify;
+  width: 90%;
 }
 
 .post-description {
@@ -106,7 +109,6 @@ a, table.table a {
   border-bottom: 1px dotted $grey-color-dark;
   background-color: var(--global-bg-color);
   opacity: 1;
-  background-image: linear-gradient(135deg, #F05F57 10%, #360940 100%);
 }
 
 * {
@@ -127,27 +129,15 @@ a, table.table a {
     font-size: 1.5rem;
   }
   .navbar-nav .nav-item .nav-link {
-    border-radius: 15px;
-    padding: 0.50em;
-    margin-left: 0.15em;
-    margin-right: 0.15em;
-    margin-bottom: 0.15em;
-    //transition-duration: 0.4s;
-    
-
-    
+    padding: 10px;
+    margin: 10px;
     font-size: 1.25rem;
-    font-weight: 400;
-    color: whitesmoke;
-    cursor: pointer;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
-
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid #333;
+    text-align: center;
+    transition: all .35s;
+    
     &:hover {
       color: whitesmoke;
       background-color: #222222;
@@ -173,15 +163,17 @@ a, table.table a {
     padding-bottom: 0;
     padding-top: 0;
     font-size: 2rem;
-    color: whitesmoke;
+    
     a {
       i::before {
-        color: whitesmoke;
+        color: black;
         -webkit-transition: all 0.2s ease-in-out;
+        text-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);;
+
       }
       &:hover {
         i::before {
-          color: black;
+          color: rgba(252, 104, 110, 0.75);
         }
       }
     }
@@ -356,8 +348,6 @@ footer.sticky-bottom {
 .projects {
   .card-item {
     width: auto;
-    margin-bottom: 10px;
-
     a {
       text-decoration: none;
     }
@@ -370,6 +360,7 @@ footer.sticky-bottom {
     .card {
       img {
         width: 100%;
+        padding: 50px;
       }
     }
   }
@@ -530,6 +521,16 @@ footer.sticky-bottom {
     }
   }
 }
+
+
+// repositories
+
+@media (min-width: 768px) {
+  .repo {
+    max-width: 50%;
+  }
+}
+
 
 // Rouge Color Customization
 figure.highlight {
