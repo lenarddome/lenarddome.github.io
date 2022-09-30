@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /assets/pdf/lenarddome_cv.pdf
-title: cv
+title: resume
 description:
 nav: true
 ---
