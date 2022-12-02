@@ -1,7 +1,8 @@
 ---
-layout: page
-permalink: /assets/pdf/lenarddome_cv.pdf
-title: resume
-description:
+layout: cv
+permalink: /cv/
+title: cv
 nav: true
+nav_order: 4
+cv_pdf: lenarddome_cv.pdf
 ---

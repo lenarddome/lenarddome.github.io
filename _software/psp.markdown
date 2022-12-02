@@ -6,12 +6,12 @@ img: /assets/img/software_markus-spiske-cvBBO4PzWPg-unsplash.jpg
 importance: 1
 category: cognitive-science
 ---
-
 <a href="https://cran.r-project.org/package=psp"><img src="https://cranlogs.r-pkg.org/badges/grand-total/psp" height = 20px alt="" /></a>
 <a href="https://cran.r-project.org/package=psp"><img src="https://img.shields.io/cran/v/psp" height = 20px alt="" /></a>
 <a href="https://cran.r-project.org/package=psp"><img src="https://img.shields.io/cran/l/psp" height = 20px alt="" /></a>
 
-# Implements an n-dimensional parameter space partitioning algorithm for evaluating the global behaviour of formal computational models as described by [Pitt, Kim, Navarro and Myung (2006)](https://psycnet.apa.org/doiLanding?doi=10.1037/0033-295X.113.1.57)
+
+## Implements an n-dimensional parameter space partitioning algorithm for evaluating the global behaviour of formal computational models as described by [Pitt, Kim, Navarro and Myung (2006)](https://psycnet.apa.org/doiLanding?doi=10.1037/0033-295X.113.1.57)
 
 <br>
 
@@ -19,20 +19,30 @@ category: cognitive-science
 
 <br>
 
-This is a brief manual for those without time. A more extensive introduction is
-in the works and will be hosted on the Project's GitHub Wiki.
+2021-07-05T09:55:05+0100: THIS MANUAL IS IN DEVELOPMENT
 
 ## CODE DEVELOPMENT
 
-**We are completely open-source and free. Anyone can contribute. If you would like to raise an issue or contribute code, use Github, message or email me (@lenarddome).**
+A big influence on this implementation is an instantiation of the Open Models
+Initiative, [catlearn](https://github.com/ajwills72/catlearn).
 
-A big influence on this implementation is an instantiation of the Open Models Initiative, [catlearn](https://github.com/ajwills72/catlearn).
-Watch the talk of [Andy Wills: “The OpenModels project”](https://youtu.be/SfqkqEYagJU) from Open Research Working Group (ORWG) virtual meeting 08/09/20.
-Also check out his **great and concise [blog post](https://www.andywills.info/2021-06-23-psp/)** on psp.
-The project owes a great debt to him.
+Watch the talk of [Andy Wills: “The OpenModels project”](https://youtu.be/SfqkqEYagJU)
+from Open Research Working Group (ORWG) virtual meeting 08/09/20.
 
 The project's architecture is also influenced by [DEoptim](https://github.com/ArdiaD/DEoptim).
-`DEoptim` implements a Differential Evolutionary Optimization algorithm for model-fitting.
+`DEoptim` implements a Differential Evolutionary Optimization algorithm for
+model-fitting.
+
+We are completely open-source and free. Anyone can contribute. If you would
+like to raise an issue or contribute code, use Github, message or email me
+(@lenarddome).
+
+**There is a great and concise [blog post](https://www.andywills.info/2021-06-23-psp/)
+about it by [Andy Wills](https://www.andywills.info/)**, who helped me quite a bit
+in understanding what psp is and how it works. He is also an author
+on the package. His post makes some great points about the essence of parameter
+space partitioning. I thought that I would complement that post with a
+non-exhaustive manual.
 
 In the remainder of this post, I will walk through the steps of using `psp`.
 This walk-through will use a two parameter model. PSP will need to find 10 distinct regions.
@@ -51,12 +61,17 @@ For the developmental version:
 devtools::install_github("lenarddome/psp")
 ```
 
+
 ## MODEL
 
-Then we put together a model (essentially a model of a polytope), that calculates the euclidean distance from a selected number of points.
-These points are selected at random at the beginning and kept constant throughout the simulation.
-In the original paper, [Pitt, Kim, Navarro and Myung (2006)](https://psycnet.apa.org/doi/10.1037/0033-295X.113.1.57) used a hypercube to test the algorithm, here I will use a polytope.
-I choose to use a polytope, because I want the regions to vary in size, compared to a hypercube where the space is uniformly partitioned.
+Then we put together a model (essentially a model of a polytope), that
+calculates the euclidean distance from a selected number of points. These
+points are selected at random at the beginning and kept constant throughout
+the simulation. In the original paper,
+[Pitt, Kim, Navarro and Myung (2006)](https://psycnet.apa.org/doi/10.1037/0033-295X.113.1.57)
+used a hypercube to test the algorithm, here I will use a polytope. I choose
+to use a polytope, because I want the regions to vary in size, compared to a hypercube
+where the space is uniformly partitioned.
 
 ```r
 #' euclidean distance
@@ -72,7 +87,8 @@ for (i in seq_len(2)) positions <- cbind(positions, sample(500, 10))
 ```
 
 If we have those two, we could put together our model of a polytope.
-We need to code our model, so it take sin a vector of parameters and outputs a character vector. It doesn't have to be a character vector.
+We need to code our model, so it take sin a vector of parameters and
+outputs a character vector. It doesn't have to be a character vector.
 It can also be a Boolean, or integers, but I am yet to test it with those.
 
 ```r
@@ -107,8 +123,10 @@ library(psp)
 ```
 
 Now we can let psp do its job.
-Here we run the MCMC for 400 iterations, but the partitioning will stop if the population of all regions reach 300.
-Note that we have to load our utility function into the clusters, because psp_global will run parallel.
+Here we run the MCMC for 400 iterations, but the partitioning
+will stop if the population of all regions reach 300.
+Note that we have to load our utility function into
+the clusters, because psp_global will run parallel.
 
 ```r
 # run Parameter Space Partitioning with some default settings
@@ -141,26 +159,59 @@ to what the model predicted.
 
 This is how it looks under the hood in real time:
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/548351899?h=097ecfdea2" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+<iframe width="800" height="600" src="https://www.youtube.com/embed/xkfKJO2ViWI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Each colour is a separate region.
 
-Admittedly, this is a very simple use-case. Below is a more apt illustration of
-what `psp` is doing behind the scenes for a 3D polytope model:
+### AMAZING, BUT WHAT NOW?
 
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/652405415?h=ffafca4001" width="640" height="426" frameborder="0" allowfullscreen></iframe>
+This was a simple model bearing no psychological commitment - unless you are
+one of the few believing that the brain has a geometry module or that learning
+happens according to laws of geometry.
+
+The question is what we can do with the output now? A simple next step could
+be **calculating volume of the regions**. Behaviours that occupy large regions
+in the parameter space might be more frequent behaviours, therefore might need
+more of our attentiont. Maybe the behaviour with the largest region is something
+that we haven't even observed yet.
+
+Alternatively, you can try to discover clusters of points in the parameter space
+within regions and ordinal patterns. There might be many ways a model might
+operate but still outputs the same result.
+
+You can compare how many different qualitative outputs the model produces and
+how many of those have been observed in humans. You might also try to figure out
+when unobserved qualitative outputs occur according to the model.
+
+## NOTES FOR THE CURIOUS
+
+I had some thoughts while trying to implement the algorithm. Turns out,
+some of my concern was picked up by people other than me.
+
+### VOLUMES [will not be included]
+
+Not feasible to implement a method that generalizes to n-dimensional polyhedra
+or convex polytope. There are already packages out there that can do it. I would
+leave it for the user. The method of calculating the volume/area of each region
+should be an explicit choice the modeller makes.
 
 ### BURN-IN [will not be implemented]
 
-If you have a decent starting point (e.g. parameters EXIT uses to produce inverse base-rate effect, or ALCOVE best-fitting parameters for the Type I-VI problems), burn-in is unnecessary.
+If you have a decent starting point (e.g. parameters EXIT uses to produce inverse
+base-rate effect, or ALCOVE best-fitting parameters for the Type I-VI problems),
+burn-in is unnecessary.
 
 I am also not sure why burn-in is necessary for parameter space partitioning.
-It seems counter-intuitive to discard areas you explored in the parameter space if you'd like to explore said parameter space.
-Here we have no target to reach other than to fill in the whole space - unlike scenarios where you want to optimize some point estimate like the mean of a distribution
-Burn-in seems to be a remains of a non-standardizes tradition in using MCMC.
+It seems counter-intuitive to discard areas you explored in the parameter space
+if you'd like to explore said parameter space. Here we have no target to reach
+other than to fill in the whole space - unlike scenarios where you want
+to optimize some point estimate like the mean of a distribution
 
-One problem we might encounter is that *regions further away from our starting jumping distribution will be under-sampled*.
-This could be avoided by increasing the number of `iterations`, so the MCMC will sample long enough to adequately populate those regions as well. One might also choose to decrease the radius to sample from smaller areas surrounding the jumping distributions.
+One problem we might encounter is that *regions further away from our starting
+jumping distribution will be under-sampled*. This could be avoided by increasing the number
+of `iterations`, so the MCMC will sample long enough to adequately populate
+those regions as well. One might also choose to decrease the radius to
+sample from smaller areas surrounding the jumping distributions.
 
 Resources to look through:
 

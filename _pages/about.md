@@ -3,16 +3,15 @@ layout: about
 title: about
 permalink: /
 description: Doctoral Researcher in the Cognitive Sciences
-
-profile:  
-  align: right
-  image: prof_pic.jpg
-  address: >
-   <p>Link 211, University of Plymouth</p>
-   <p>Plymouth, PL4 8AA, England</p>
+# profile:  
+#    align: right
+#    image: prof_pic.jpg
+# #    address: >
+# #     <p>Link 211, University of Plymouth</p>
+# #     <p>Plymouth, PL4 8AA, England</p>
 news: false  # includes a list of news items
 selected_papers: true # includes a list of papers marked as selected={true}
-social: true  # includes social icons at the bottom of the page
+social: false  # includes social icons at the bottom of the page
 ---
 
 <br>
@@ -24,3 +23,12 @@ social: true  # includes social icons at the bottom of the page
 My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**.
 
 I develop software for my own research and package them as free and open-source software. The finished products are usually all-purpose implementations of the tools that I am using. If you are using anything I developed, please consider supporting me by buying me a coffee. All needs to be done is to click on the coffee icon at the right bottom corner.
+
+Some of my software:
+
+**psp** [aut, cre] [![](https://cranlogs.r-pkg.org/badges/grand-total/psp)](https://cran.r-project.org/package=psp) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/lenarddome/psp?include_prereleases) ![CRAN/METACRAN](https://img.shields.io/cran/v/psp) ![CRAN/METACRAN](https://img.shields.io/cran/l/psp)
+    Implements an n-dimensional parameter space partitioning algorithm for evaluating the global behaviour of formal computational models as described by Pitt, Kim, Navarro and Myung (2006)
+
+**catlearn** [aut, ctb] [![](https://cranlogs.r-pkg.org/badges/grand-total/catlearn)](https://cran.r-project.org/package=catlearn) ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/ajwills72/catlearn?include_prereleases) ![CRAN/METACRAN](https://img.shields.io/cran/v/catlearn) ![CRAN/METACRAN](https://img.shields.io/cran/l/catlearn)
+    Catlearn is an archive of formal models of categorization and learning, plus benchmark datasets to test them against.
+

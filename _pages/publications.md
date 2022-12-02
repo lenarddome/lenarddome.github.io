@@ -2,18 +2,18 @@
 layout: page
 permalink: /publications/
 title: publications
-description: 
-years: [2021, 2019]
+description:
+years: [2022, 2021, 2020, 2019]
 nav: true
+nav_order: 1
 ---
-
-For a list that includes other resources and supplementary
-materials, visit the github repository: [publications](https://github.com/lenarddome/publications)
-
+<!-- _pages/publications.md -->
 <div class="publications">
 
-{% for y in page.years %}
-  <h2 class="year">{{y}}</h2>
+<hr>
+<br>
+
+{%- for y in page.years %}
   {% bibliography -f papers -q @*[year={{y}}]* %}
 {% endfor %}
 

@@ -1,0 +1,38 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Lenard Dome
+    - name: Languages
+      value: English, Hungarian
+
+
+- title: Scientific Interests
+  type: nested_list
+  contents:
+    - title: Computational Modelling of Cognition and Behaviour
+      items: 
+        - Exploring ways to benchmark models against humans when both models and humans are heterogeneous
+        - Quantifying model flexibility based on model behaviour instead of model architecture
+    - title: Categorization, Probabilistic Learning, Social Categorization
+      items:
+        - Irrationality (inverse base-rate effect, illusory correlation)
+        - Suboptimal Decision Making
+    - title: Open Reproducible Decentralised Science
+      items:
+        - Developing and maintaining open-source and free scientific software
+        - Reimplementing general multi-purpose computational models and methods that are cross-compatible with most potential use-cases
+
+- title: Grants and Funding
+  type: time_table
+  contents:
+    - year: 2019
+      items: 
+        - Doctoral Training Studentship (1+3) fully funded by the Economic and Social Research Council in collaboartion with the South West Doctoral Training Partnership
+
+- title: Awards
+  type: time_table
+  contents:
+    - year: 2019
+      items: 
+        - BSA / EPS Undergraduate Project Prize Award for 2020
