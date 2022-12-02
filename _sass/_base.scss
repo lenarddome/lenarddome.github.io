@@ -6,7 +6,6 @@
 
 p, h1, h2, h3, h4, h5, h6, em, div, li, span, strong {
   color: var(--global-text-color);
-  font-family: 'Roboto', sans-serif;
 }
 
 hr {
@@ -107,37 +106,18 @@ blockquote {
   }
 }
 
-.img-profile {
-  border-top-left-radius: 50% 50%;
-  border-top-right-radius: 50% 50%;
-  border-bottom-right-radius: 50% 50%;
-  border-bottom-left-radius: 50% 50%;
-  border: 2px solid #222222;
-  margin-bottom: 2px;
-}
-
 @media (min-width: 576px) {
   .profile {
-    margin-left: 2rem;
-    width: 50%;
-
+    width: 30%;
     .address {
       p { display: block; }
     }
   }
 }
 
-.post {
-  font-size: 1.25rem;
-  line-height: normal;
-  margin: auto;
-  text-align: justify;
-  width: 90%;
-}
-
 .post-description {
   margin-bottom: 2rem;
-  font-size: 1.875rem;
+  font-size: 0.875rem;
   a {
     color: inherit;
     &:hover {
@@ -189,47 +169,26 @@ blockquote {
     }
   }
   .navbar-brand {
-    color: whitesmoke;
-    font-size: 1.5rem;
+    color: var(--global-text-color);
   }
   .navbar-nav .nav-item .nav-link {
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.25rem;
-    text-decoration: none;
-    border-radius: 15px;
-    //color: #333;
-    //border: 2px solid #333;
-    text-align: center;
-    transition: all .45s;
-    
+    color: var(--global-text-color);
     &:hover {
-      color: whitesmoke;
-      background-color: #222222;
-      box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
-      background-position: 100% 0;
-      border-radius: 15px;
-      moz-transition: all .4s ease-in-out;
-      -o-transition: all .4s ease-in-out;
-      -webkit-transition: all .4s ease-in-out;
-      transition: all .4s ease-in-out;
-      //box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      color: var(--global-hover-color);
     }
   }
   .navbar-nav .nav-item.active>.nav-link {
-      background-color: #222222;
+      background-color: inherit;
       font-weight: bolder;
-      color: whitesmoke;
-      //box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);;
+      color: var(--global-theme-color);
       &:hover {
-        color: white;
+        color: var(--global-hover-color);
       }
   }
   .navbar-brand.social {
     padding-bottom: 0;
     padding-top: 0;
-    font-size: 2rem;
-    
+    font-size: 1.7rem;
     a {
       i::before {
         color: var(--global-text-color);
@@ -237,7 +196,7 @@ blockquote {
       }
       &:hover {
         i::before {
-          color: rgba(252, 104, 110, 0.75);
+          color: var(--global-theme-color);
         }
       }
     }
@@ -518,7 +477,7 @@ footer.sticky-bottom {
     margin-bottom: 1em;
   }
   h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     span {
       font-size: 1.5rem;
     }
@@ -533,7 +492,6 @@ footer.sticky-bottom {
   }
   ol.bibliography {
     list-style: none;
-    color: $grey-color-dark;
     padding: 0;
     margin-top: 0;
     li {
@@ -582,7 +540,6 @@ footer.sticky-bottom {
           border-bottom: 1px dashed;
           font-weight: 900;
           font-style: normal;
-          font-weight: bolder;
         }
         > span.more-authors {
           color: var(--global-text-color-light);
@@ -595,7 +552,6 @@ footer.sticky-bottom {
         }
       }
       .links {
-        font-size: 1.25rem;
         a.btn {
           font-weight: 500;
           color: white;
@@ -650,16 +606,6 @@ footer.sticky-bottom {
     }
   }
 }
-
-
-// repositories
-
-@media (min-width: 768px) {
-  .repo {
-    max-width: 50%;
-  }
-}
-
 
 // Rouge Color Customization
 figure.highlight {
