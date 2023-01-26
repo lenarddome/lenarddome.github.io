@@ -6,13 +6,16 @@ description: Doctoral Researcher in the Cognitive Sciences
 # profile:  
 #    align: right
 #    image: prof_pic.jpg
-# #    address: >
-# #     <p>Link 211, University of Plymouth</p>
-# #     <p>Plymouth, PL4 8AA, England</p>
+#    address: lenarddome@gmail.com
+#     <p>Link 211, University of Plymouth
+#     Plymouth, PL4 8AA, England</p>
 news: false  # includes a list of news items
 selected_papers: true # includes a list of papers marked as selected={true}
 social: false  # includes social icons at the bottom of the page
 ---
+
+
+{% include figure.html path="assets/img/banner.png" class="img-fluid " zoomable=true %}
 
 ![BuiltWithScience](http://ForTheBadge.com/images/badges/built-with-science.svg)
 
@@ -20,7 +23,7 @@ social: false  # includes social icons at the bottom of the page
 
 **I am a Psychology PhD in the [Computational Modelling Lab](https://www.plymouth.ac.uk/research/psychology/brain-research-and-imaging-centre/the-computational-modelling-laboratory) at the [School of Psychology, University of Plymouth](https://www.plymouth.ac.uk/schools/psychology).**
 
-My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**.
+My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**. I work hard on open sourcing science! Transparency, opennes, reproducibility and accessability are at the core of my work.
 
 I develop software for my own research and package them as free and open-source software. The finished products are usually all-purpose implementations of the tools that I am using. If you are using anything I developed, please consider supporting me by buying me a coffee. All needs to be done is to click on the coffee icon at the right bottom corner.
 
