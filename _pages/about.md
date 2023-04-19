@@ -14,17 +14,21 @@ selected_papers: true # includes a list of papers marked as selected={true}
 social: false  # includes social icons at the bottom of the page
 ---
 
+![BuiltWithScience](http://ForTheBadge.com/images/badges/built-with-science.svg)
+
+<p style="text-align:center"><span style="font-weight:400;font-size:40px">COMPLEXITY, HETEROGENEITY, INTELLIGENCE</span></p>
+
 {% include figure.html path="assets/img/banner.png" class="img-fluid " zoomable=true %}
 
-![BuiltWithScience](http://ForTheBadge.com/images/badges/built-with-science.svg)
+
 
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="lenarddome" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFDD00" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
 **I am a Psychology PhD in the [Computational Modelling Lab](https://www.plymouth.ac.uk/research/psychology/brain-research-and-imaging-centre/the-computational-modelling-laboratory) at the [School of Psychology, University of Plymouth](https://www.plymouth.ac.uk/schools/psychology).**
 
-My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this to work to impression formation and **social categorization**. I work hard on open sourcing science! Transparency, opennes, reproducibility and accessability are at the core of my work culture.
+My primary research focuses on **computational modelling of categorization and human behavioural complexity**. I am also interested in connecting this work to impression formation and **social categorization**. I work hard on open sourcing science! Transparency, opennes, reproducibility and accessability are at the core of my work culture.
 
-I develop software for my own research and package them as free and open-source software. The finished products are usually all-purpose implementations of the tools that I am using. If you are using anything I developed, please consider supporting me by buying me a coffee. All needs to be done is to click on the coffee icon at the right bottom corner.
+I develop software for my own research and package them as free and open-source software. The finished products are usually all-purpose implementations of the tools that I am using. If you are using anything I developed, please consider supporting me by buying me a coffee. All that needs to be done is to click on the coffee icon at the right bottom corner.
 
 Some of my software:
 
