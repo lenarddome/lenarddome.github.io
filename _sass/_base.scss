@@ -8,6 +8,12 @@ p, h1, h2, h3, h4, h5, h6, em, div, li, span, strong {
   color: var(--global-text-color);
 }
 
+span.font-weight-bold {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+
 hr {
   border-top: 1px solid var(--global-divider-color);
 }
@@ -173,12 +179,15 @@ blockquote {
   }
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
+    transition: transform 0.5s; /* Animation */
     &:hover {
       color: var(--global-hover-color);
+      font-weight: 600;
+      transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
   }
   .navbar-nav .nav-item.active>.nav-link {
-      background-color: inherit;
+      background-color: pink;
       font-weight: bolder;
       color: var(--global-theme-color);
       &:hover {
@@ -468,7 +477,7 @@ footer.sticky-bottom {
 .publications { 
   text-align: justify;
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 1.15rem;
   h1 {
     color: var(--global-theme-color);
     font-size: 2rem;
