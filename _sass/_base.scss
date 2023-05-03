@@ -78,7 +78,7 @@ blockquote {
     margin-bottom: 10px;
 
     .row {
-      display: flex;
+      display: grid;
       align-items: center;
     }
   }
@@ -321,7 +321,7 @@ footer.sticky-bottom {
 
 @media (min-width: 768px) {
   .repo {
-    max-width: 50%;
+    max-width: 75%;
   }
 }
 
@@ -467,7 +467,7 @@ footer.sticky-bottom {
 
 .publications { 
   text-align: justify;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 1rem;
   h1 {
     color: var(--global-theme-color);
@@ -485,10 +485,10 @@ footer.sticky-bottom {
   h2.year {
     color: var(--global-text-color);
     border-top: 1px solid var(--global-divider-color);
-    padding-top: 1rem;
+    padding: 1rem;
     margin-top: 2rem;
     margin-bottom: -2rem;
-    text-align: left;
+    text-align: right;
   }
   ol.bibliography {
     list-style: none;
@@ -530,20 +530,26 @@ footer.sticky-bottom {
       }
       .author {
         a {
-          border-bottom: 1px dashed var(--global-theme-color);
+          font-weight: 300;
           &:hover {
               border-bottom-style: solid;
               text-decoration: none;
+              font-weight: 600;
+
           }
         }
         > em {
-          border-bottom: 1px dashed;
-          font-weight: 900;
+          background-color: #222122;
+          color: white;
+          padding: 0.2rem;
+          font-weight: 500;
           font-style: normal;
+          &::before {
+            content: '*';
+          }
         }
         > span.more-authors {
           color: var(--global-text-color-light);
-          border-bottom: 1px dashed var(--global-text-color-light);
           cursor: pointer;
           &:hover {
               color: var(--global-text-color);

@@ -4,7 +4,7 @@ permalink: /software/
 title: software
 description: Some selected software and code.
 nav: true
-nav_order: 3
+nav_order: 1
 ---
 
 ## GitHub users
@@ -26,5 +26,6 @@ nav_order: 3
   {% for repo in site.data.repositories.github_repos %}
     {% include repository/repo.html repository=repo %}
   {% endfor %}
-</div>
 {% endif %}
+</div>
+
