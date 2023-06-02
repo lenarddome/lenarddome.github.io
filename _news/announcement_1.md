@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2021-05-24 20:49:05+0100
+date: 2023-06-02 15:39:05+0100
 inline: true
 ---
 
-My website has been redesigned.
+:sparkles: Welcome to this special place!

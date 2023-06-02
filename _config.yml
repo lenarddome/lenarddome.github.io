@@ -17,9 +17,6 @@ keywords: cognitive-science, computational-modelling, formal-modelling, portfoli
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
-
 url: https://lenarddome.github.io # the base hostname & protocol for your site
 baseurl:  # the subpath of your site, e.g. /blog/
 last_updated: false # set to true if you want to display last updated in the footer
@@ -43,7 +40,7 @@ repo_theme_dark: radical           # https://github.com/anuraghazra/github-readm
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -70,12 +67,12 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # -----------------------------------------------------------------------------
 
 github_username: lenarddome # your GitHub user name
-gitlab_username: lenarddome # your GitLab user name
+gitlab_username: # your GitLab user name
 twitter_username: lenarddome # your Twitter handle
 linkedin_username: # your LinkedIn user name
 scholar_userid: NNXkqkEAAAAJ # your Google Scholar ID
 orcid_id: 0000-0001-7487-1974 # your ORCID ID
-medium_username: # your Medium username
+medium_username: lenarddome # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
 research_gate_profile: # your profile on ResearchGate
@@ -103,7 +100,7 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: cogdiment # blog_name will be displayed in your blog page
-blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
+blog_nav_title: # your blog must have a title for it to be displayed in the nav bar
 blog_description: a simple whitespace theme for academics
 
 permalink: /blog/:year/:title/

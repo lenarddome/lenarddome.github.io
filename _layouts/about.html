@@ -20,7 +20,7 @@ layout: default
               {% if page.profile.image_circular %}
                 {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
               {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
+                {%- assign profile_image_class = "img-fluid z-depth-1" -%}
               {% endif %}
 
               {% include figure.html 
@@ -30,7 +30,7 @@ layout: default
             {% endif -%}
             {%- if page.profile.address %}
             <div class="address">
-              {{ page.profile.address }}
+              <i class="fas fa-envelope"></i> {{ page.profile.address }}
             </div>
             {%- endif %}
           </div>
