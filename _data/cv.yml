@@ -8,20 +8,14 @@
 
 
 - title: Scientific Interests
-  type: nested_list
+  type: map
   contents:
-    - title: Computational Modelling of Cognition and Behaviour
-      items: 
-        - Exploring ways to benchmark models against humans when both models and humans are heterogeneous
-        - Quantifying model flexibility based on model behaviour instead of model architecture
-    - title: Categorization, Probabilistic Learning, Social Categorization
-      items:
-        - Irrationality (inverse base-rate effect, illusory correlation)
-        - Suboptimal Decision Making
-    - title: Open Reproducible Decentralised Science
-      items:
-        - Developing and maintaining open-source and free scientific software
-        - Reimplementing general multi-purpose computational models and methods that are cross-compatible with most potential use-cases
+    - name: Computational Modelling of Cognition and Behaviour
+      value: I developed a formal framework to benchmark formal model heterogeneity against human heterogeneity. The most novel aspect of this approach is that we put a large emphasis on model predictions -- events the models say will happen but we did not observe in the human data. This resulted in a new measure of model flexibility that allows us to see, quantify, explore how unhuman models really are.
+    - name: Categorization, Probabilistic Learning, Social Categorization
+      value: I carried out extensive research on irrational phenomena of categorization with a main focus on evaluating attentional theories of category learning. Taking an experimental psychologist's approach, I developed novel paradigms to test the validity, accuracy and consequences of those formal theories. I both confirmed and disconfirmed model predictions as I increased the family of findings attentional theories have to explain in learning.
+    - name: Open Reproducible Decentralised Science
+      value: I am a big promoter and supporter of Open Science practices. Throughout my scientific career, I hosted the ReproducibiliTea journal club for more than two years, I developed multiple R packages to nurture collaboration via implementing general-purpose methods and computational models with reproducible simulations. I delivered training and peer-to-peer support that helped peers and senior staff to adopt Open Science Practices. I also develop freely-available online training/teaching materials.
 
 - title: Grants and Funding
   type: time_table
