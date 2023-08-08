@@ -14,7 +14,6 @@ selected_papers: false # includes a list of papers marked as selected={true}
 social: false  # includes social icons at the bottom of the page
 ---
 
-![BuiltWithScience](http://ForTheBadge.com/images/badges/built-with-science.svg)
 
 <!-- <p style="text-align:center"><span style="font-weight:400;font-size:40px">COMPLEXITY, HETEROGENEITY, INTELLIGENCE</span></p> -->
 
