@@ -25,6 +25,7 @@ social: false  # includes social icons at the bottom of the page
 My primary research focuses on **computational modelling of human heterogeneity**.
 I also develop new and innovative frameworks ([https://psyarxiv.com/ygmcj](https://psyarxiv.com/ygmcj)) for large-scale relative model comparisons.
 In addition, I have done effect-centric research on when **intelligent systems fail** with a special focus on the **inverse base-rate effect** - an irrational effect of non-uniform generalization of learned experience.
-I work hard on open sourcing science! Transparency, opennes, reproducibility and accessability are at the core of my work culture.
+
+To top it all, I work hard on open sourcing science! Transparency, opennes, reproducibility and accessability are at the core of my work culture.
 
 I develop software for my own research and package them as free and open-source software. The finished products are usually all-purpose implementations of the tools that I am using. If you are using anything I developed, please consider supporting me by buying me a coffee. All that needs to be done is to click on the coffee icon at the right bottom corner.
