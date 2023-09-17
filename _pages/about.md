@@ -20,9 +20,10 @@ social: false  # includes social icons at the bottom of the page
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="lenarddome" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFDD00" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
 
-**I am a Psychology PhD in the [Computational Modelling Lab](https://www.plymouth.ac.uk/research/psychology/brain-research-and-imaging-centre/the-computational-modelling-laboratory) at the [School of Psychology, University of Plymouth](https://www.plymouth.ac.uk/schools/psychology).**
 
-My primary research focuses on **computational modelling of human heterogeneity**.
+**I am a computational cognitive scientist.**
+
+My primary research focuses on **computational modelling of human heterogeneity and behavioural complexity**.
 I also develop new and innovative frameworks ([https://psyarxiv.com/ygmcj](https://psyarxiv.com/ygmcj)) for large-scale relative model comparisons.
 In addition, I have done effect-centric research on when **intelligent systems fail** with a special focus on the **inverse base-rate effect** - an irrational effect of non-uniform generalization of learned experience.
 
