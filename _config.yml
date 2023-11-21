@@ -82,6 +82,7 @@ keybase_username: # your keybase user name
 wikidata_id: # your wikidata id
 dblp_url: # your DBLP profile url
 stackoverflow_id: #your stackoverflow id
+mastodon_username: sigmoid.social/lenarddome
 
 contact_note:
 
@@ -251,7 +252,7 @@ scholar:
 filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, preview]
 
 # Maximum number of authors to be shown, other authors will be visible on hover, leave blank to show all authors
-max_author_limit:
+max_author_limit: 10
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
