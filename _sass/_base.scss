@@ -101,10 +101,13 @@ blockquote {
 .profile {
   margin: 5rem;
   width: 100%;
+  display: block;
+  text-align: center;
   .address {
     margin-bottom: 5px;
     margin-top: 5px;
     font-family: monospace;
+    font-size: medium;
     p {
       display: inline-block;
       margin: 0;
@@ -114,9 +117,8 @@ blockquote {
 
 @media (min-width: 576px) {
   .profile {
-    width: 40%;
     .address {
-      p { display: block; }
+      p { display:inline-block; }
     }
   }
 }
@@ -330,7 +332,8 @@ footer.sticky-bottom {
 
 @media (min-width: 768px) {
   .repo {
-    max-width: 75%;
+    min-width: none;
+    max-width: 100%;
   }
 }
 
@@ -500,7 +503,7 @@ footer.sticky-bottom {
     text-align: right;
   }
   ol.bibliography {
-    max-width: 800px;
+    max-width: 1000px;
     width: max-content;
     list-style: none;
     padding: 0;

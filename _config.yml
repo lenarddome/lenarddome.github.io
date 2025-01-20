@@ -5,7 +5,7 @@
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Lenard
 last_name: Dome
-email: lenarddome@gmail.com
+email: lenarddome [at] gmail [dot] com
 
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
@@ -216,7 +216,7 @@ jekyll-archives:
     tag: '/blog/tag/:name/'
     category: '/blog/category/:name/'
 
-display_tags: ['cognitive-science', 'code', 'method', 'math', 'reflection'] # this tags will be dispalyed on the front page of your blog
+display_tags: ['cognitive-science', 'code', 'method', 'math', 'reflection'] # this tags will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
