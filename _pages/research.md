@@ -14,3 +14,5 @@ In addition, I have done effect-centric research on when **intelligent systems f
 
 To top it all, I work hard on **open sourcing science!** Transparency, openness, reproducibility and accessability are at the core of my work culture. I am involved in a variety of open-source science projects.
 I am the lead developer of [<i class="fab fa-github"></i> psp](https://github.com/lenarddome/psp), a senior developer of [<i class="fab fa-github"></i> catlearn](https://github.com/ajwills72/catlearn).
+
+![banner](/assets/img/banner.png)

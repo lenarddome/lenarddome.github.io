@@ -100,17 +100,16 @@ blockquote {
 
 .profile {
   margin: 5rem;
-  width: 100%;
+  // width: 100%;
   display: block;
   text-align: center;
   .address {
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin: 1rem;
     font-family: monospace;
     font-size: medium;
     p {
       display: inline-block;
-      margin: 0;
+      // margin: 10;
     }
   }
 }
@@ -263,8 +262,9 @@ blockquote {
 
 .social {
   text-align: center;
+  margin-top: 2rem;
   .contact-icons {
-    font-size: 4rem;
+    font-size: 2rem;
     a {
       i::before {
         color: var(--global-text-color);
@@ -478,9 +478,10 @@ footer.sticky-bottom {
 // Publications
 
 .publications { 
-  text-align: justify;
+  text-align: left;
   margin-top: 1rem;
   font-size: 1.05rem;
+  max-width: fit-content;
   h1 {
     color: var(--global-theme-color);
     font-size: 2rem;
@@ -503,7 +504,7 @@ footer.sticky-bottom {
     text-align: right;
   }
   ol.bibliography {
-    max-width: 1000px;
+    max-width: inherit;
     width: max-content;
     list-style: none;
     padding: 0;
