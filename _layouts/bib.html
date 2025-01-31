@@ -120,7 +120,11 @@
           {%- endif -%}
           {%- capture periodical -%}{{ entrytype }} {{ entryvolume }} {{ entryissue }} {{ entrypages }} {%- endcapture -%}
             <i>{{ periodical | strip }} </i>
-        {%- endif %}
+            {%- endif %}
+          {% if entry.notes -%}
+          {{entry.notes}}
+          {%- endif %}
+
   </div>
           <!-- Links/Buttons -->
           <div class="links">
@@ -150,11 +154,15 @@
             {%- endif %}
           {%- endif %}
           {%- if entry.supp %}
-            {% if entry.supp contains '://' -%}
-            <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          {%- assign supp_entries = entry.supp | split: "," | map: "strip" -%}
+            <!-- <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a> -->
+            {%- if supp_entries.size == 1 -%}
+              <a href="{{ supp_entries[0] }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
             {%- else -%}
-            <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
-            {%- endif %}
+            {%- for supp_entry in supp_entries -%}
+              <a href="{{ supp_entry }}" class="btn btn-sm z-depth-0" role="button">Supp {{ forloop.index }}</a>
+            {%- endfor -%}
+            {%- endif -%}
           {%- endif %}
           {%- if entry.blog %}
             <a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
