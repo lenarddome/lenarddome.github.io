@@ -1,75 +1,24 @@
 ---
 ---
-<div class="text-justify">{{reference}}</div>
-<button class="button0"  onclick="toggleBibtex{{entry.key}}()">Bibtex</button>
- 
-{% if entry.doi %}
-    <a href="{{ entry.doi | prepend: 'http://doi.org/' }}"><input class="button1" type="button" value="doi" /></a>
-{% endif %}
- 
-{% if entry.preprint %}
-    <a href="{{ entry.preprint }}"><input class="button2" type="button" value="preprint" /></a>
-{% endif %}
- 
-{% if entry.link %}
-    <a href="{{ entry.link }}"><input class="button4" type="button" value="link" /></a>
-{% endif %}
- 
-{% if entry.pdf %}
-    <a href="{{ entry.pdf }}"><input class="button4" type="button" value="pdf" /></a>
-{% endif %}
+{{reference}}
 
-{% if entry.code %}
-    <a href="{{ entry.code }}"><input class="button3" type="button" value="code" /></a>
-{% endif %}
+<div id="{{key}}-materials">
+    <ul class="nav nav-pills">
+        {% if entry.abstract %}
+        <li><a data-toggle="collapse" href="#{{key}}-abstract">Abstract</a></li>
+        {% endif %}
 
-{% if entry.supplementary %}
-    <a href="{{ entry.supplementary }}"><input class="button3" type="button" value="supplementary" /></a>
-{% endif %}
+        <li><a data-toggle="collapse" href="#{{key}}-bibtex">BibTeX</a></li>
 
-{% if entry.data %}
-    <a href="{{ entry.data }}"><input class="button3" type="button" value="data" /></a>
-{% endif %}
+        {% if link %}
+        <li><a href="{{link}}">Download</a></li>
+        {% endif %}
+    </ul>
 
-<div id="a{{entry.key}}" style="display: none;">
-<pre>{{entry.bibtex}}</pre>
-</div>
-<script>
-function toggleBibtex{{entry.key}}(parameter) {
-    var x= document.getElementById('a{{entry.key}}');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
+    {% if entry.abstract %}
+    <p id="{{key}}-abstract" class="collapse">{{entry.abstract}}</p>
+    {% endif %}
 
-## new stuff
+    <pre id="{{key}}-bibtex" class="pre pre-scrollable collapse">{{entry.bibtex}}</pre>
 
-{% if entry.doi %}
-<a href="https://doi.org/{{ entry.doi }}"><i class="ai ai-doi"></i></a>
-{% endif %}
-{% if entry.arxiv %}
-<i class="ai ai-arxiv"></i>
-{% endif %}
-{% if entry.psyarxiv %}
-<i class="ai ai-psyarxiv"></i>
-{% endif %}
-{% if entry.pdf %}
-{% if entry.pdf contains '://' %}
-<a href="{{ entry.pdf }}"><i class="fas fa-file-pdf"></i></a>
-{% else %}
-<a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}"><i class="fas fa-file-pdf"></i></a>
-{% endif %}
-{% endif %}
-{% if entry.osf %}
-<a href="{{ entry.osf }}"><i class="ai ai-osf"></i></a>
-{% endif %}
-{% if entry.figshare %}
-<a href="{{ entry.figshare }}"><i class="ai ai-figshare"></i></a>
-{% endif %}
-{% if entry.github %}
-<a href="{{ entry.github }}"><i class="fab fa-github"></i></a>
-{% endif %}
 </div>

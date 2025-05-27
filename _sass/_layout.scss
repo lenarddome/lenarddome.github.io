@@ -7,7 +7,12 @@ body {
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     scroll-margin-top: 66px;
   }
 }
@@ -23,12 +28,13 @@ body.sticky-bottom-footer {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1300px;
 }
 
 // Profile
 .profile {
   max-width: 800px;
+
   img {
     width: 100%;
   }
