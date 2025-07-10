@@ -138,6 +138,11 @@
         {%- capture link -%}https://{{ site.mastodon_username  }}{%- endcapture -%}
         {%- assign sameaslinks = sameaslinks | push: link -%}
     {%- endif -%}
+    {%- if site.bluesky_username -%}
+        {%- capture link -%}https://bsky.app/profile/{{ site.bluesky_username }}{%- endcapture -%}
+        {%- assign sameaslinks = sameaslinks | push: link -%}
+    {%- endif -%}
+
 
     <script type="application/ld+json">
       {

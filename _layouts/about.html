@@ -3,68 +3,80 @@ layout: default
 ---
 
 <!-- about.html -->
-      <div class="post">
-        <header class="post-header">
-          <h1 class="post-title">
-           {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
+<div class="post">
+  <header class="post-header">
+    <!-- <h1 class="post-title">
 
-           {% if page.cv_pdf %}<a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" target="_blank" rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>{% endif %}
-          </h1>
-          <p class="desc">{{ page.subtitle }}</p>
-        </header>
-        
-                  <div class="clearfix">
-                    {{ content }}
-                  </div>
+      {% if page.avatar %}
+      <img src="{{ page.avatar | prepend: 'assets/img/' | relative_url }}" alt="Avatar"
+        class="avatar-img rounded-circle mr-3"
+        style="max-width:80px; max-height:80px; object-fit:cover; vertical-align:middle;">
+      {% endif %}
 
-        <article>
-          {% if page.profile -%}
-          <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-            {%- if page.profile.image %}
-              {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+      {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
+      {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
 
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1" -%}
-              {% endif %}
+      
+      {% if page.cv_pdf %}
+      <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" target="_blank"
+        rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>
+      {% endif %}
+    </h1> -->
+    <p class="desc">{{ page.subtitle }}</p>
+  </header>
 
-              {% include figure.html 
-              path=profile_image_path 
-              class=profile_image_class
-              alt=page.profile.image -%}
-            {% endif -%}
-            {%- if page.profile.address %}
-            <div class="address">
-              <i class="fas fa-envelope"></i> {{ page.profile.address }}
-            </div>
-            {%- endif %}
-          </div>
-          {%- endif %}
+  <div class="clearfix">
+    {{ content }}
+  </div>
 
-          {% if page.selected_papers -%}
-          <!-- Selected papers -->
-          {%- include selected_papers.html %}
-        {%- endif %}
+  <article>
+    {% if page.profile -%}
+    <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+      {%- if page.profile.image %}
+      {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-          {% if page.news -%}
-          <!-- News -->
-            {%- include news.html %}
-          {%- endif %}
+      {% if page.profile.image_circular %}
+      {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+      {% else %}
+      {%- assign profile_image_class = "img-fluid z-depth-1" -%}
+      {% endif %}
 
-          {%- if page.social %}
-          <!-- Social -->
-          <div class="social">
-            <div class="contact-icons">
-            {% include social.html %}
-            </div>
+      {% include figure.html
+      path=profile_image_path
+      class=profile_image_class
+      alt=page.profile.image -%}
+      {% endif -%}
+      {%- if page.profile.address %}
+      <div class="address">
+        <i class="fas fa-envelope"></i> {{ page.profile.address }}
+      </div>
+      {%- endif %}
+    </div>
+    {%- endif %}
 
-            <div class="contact-note">
-              {{ site.contact_note }}
-            </div>
-            
-          </div>
-          {%- endif %}
-        </article>
+    {% if page.selected_papers -%}
+    <!-- Selected papers -->
+    {%- include selected_papers.html %}
+    {%- endif %}
+
+    {% if page.news -%}
+    <!-- News -->
+    {%- include news.html %}
+    {%- endif %}
+
+    {%- if page.social %}
+    <!-- Social -->
+    <div class="social">
+      <div class="contact-icons">
+        {% include social.html %}
+      </div>
+
+      <div class="contact-note">
+        {{ site.contact_note }}
+      </div>
+
+    </div>
+    {%- endif %}
+  </article>
 
 </div>
