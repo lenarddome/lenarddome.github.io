@@ -5,3 +5,7 @@
 "Edmunds":
   - firstname: ["Charlotte", "C.", "C. E. R.", "Charlotte E. R."]
     url: https://www.ceredmunds.com/
+
+"Spicer":
+  - firstname: ["Stuart", "G.", "S.", "Stuart G."]
+    url: https://orcid.org/0000-0001-7585-8886
