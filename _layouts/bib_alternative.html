@@ -1,24 +1,160 @@
 ---
 ---
-{{reference}}
+<div class="row">
+    <div class="col-sm-2 {% if entry.preview %}preview{% else %}abbr{% endif %}">
+        {%- if entry.preview -%}
+        {% if entry.preview contains '://' -%}
+        <img class="preview" src="{{ entry.preview }}">
+        {%- else -%}
+        <img class="preview" src="{{ entry.preview | prepend: '/assets/img/publication_preview/' | relative_url }}">
+        {%- endif -%}
+        {%- elsif entry.abbr -%}
+        {%- if site.data.venues[entry.abbr] -%}
+        <abbr class="badge"><a href="{{site.data.venues[entry.abbr].url}}">{{entry.abbr}}</a></abbr>
+        {%- else -%}
+        <abbr class="badge">{{entry.abbr}}</abbr>
+        {%- endif -%}
+        {%- endif -%}
+    </div>
 
-<div id="{{key}}-materials">
-    <ul class="nav nav-pills">
-        {% if entry.abstract %}
-        <li><a data-toggle="collapse" href="#{{key}}-abstract">Abstract</a></li>
+    <div id="{{entry.key}}" class="col-sm-8">
+        <strong>{{ entry.title }}</strong><br>
+
+
+        <!-- {{ entry.author }}<br> -->
+        <div class="author">
+            {% assign author_array_size = entry.author_array | size %}
+
+            {% assign author_array_limit = author_array_size %}
+            {% if site.max_author_limit and author_array_size > site.max_author_limit %}
+            {% assign author_array_limit = site.max_author_limit %}
+            {% endif %}
+
+            {%- for author in entry.author_array limit: author_array_limit -%}
+            {% assign author_is_self = false %}
+            {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+            {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+            {% if site.scholar.last_name contains author_last_name %}
+            {% if site.scholar.first_name contains author.first %}
+            {% assign author_is_self = true %}
+            {% endif %}
+            {%- endif -%}
+            {% assign coauthor_url = null %}
+            {% assign clean_last_name = author_last_name | downcase | remove_accents -%}
+            {% if site.data.coauthors[clean_last_name] %}
+            {%- for coauthor in site.data.coauthors[clean_last_name] -%}
+            {% for fname in coauthor.firstname %}
+            {% if fname == author.first %}
+            {%- assign coauthor_url = coauthor.url -%}
+            {% break %}
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            {%- endif -%}
+
+            {%- if forloop.length > 1 -%}
+            {% if forloop.first == false -%}
+            {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %} {% endif %}
+            {%- endif %}
+            {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+            {% endif %}
+            {%- if author_is_self -%}
+            <em>
+                {{- author.first }}
+                {{ author_last_html -}}
+            </em>
+            {%- else -%}
+            {%- if coauthor_url -%}
+            <a href="{{ coauthor_url }}">
+                {{- author.first }}
+                {{ author_last_html -}}
+            </a>
+            {%- else -%}
+            {{- author.first }}
+            {{ author_last_html -}}
+            {% endif %}
+            {%- endif -%}
+            {% endfor %}
+            {%- assign more_authors = author_array_size | minus: author_array_limit -%}
+
+            {%- assign more_authors_hide = more_authors | append: ' more author' -%}
+            {% if more_authors > 0 %}
+            {%- if more_authors > 1 -%}
+            {% assign more_authors_hide = more_authors_hide | append: 's' %}
+            {%- endif -%}
+            {% assign more_authors_show = '' %}
+            {%- for author in entry.author_array offset: author_array_limit -%}
+            {% assign more_authors_show = more_authors_show | append: author.first | append: ' ' | append: author.last
+            %}
+            {% unless forloop.last %}
+            {% assign more_authors_show = more_authors_show | append: ', ' %}
+            {% endunless %}
+            {%- endfor -%}
+            {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+            , and
+            <span class="more-authors" title="click to view {{ more_authors_hide }}" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '{{ site.more_authors_animation_delay }}');
+          ">
+                {{- more_authors_hide -}}
+            </span>
+            {% endif %}
+            {% if entry.annotation %}
+            <i class="fa-solid fa-circle-info ml-1" data-toggle="popover" data-placement="top" data-html="true"
+                data-content="{{ entry.annotation | escape }}">
+            </i>
+            {% endif %}
+        </div>
+
+
+
+        {% if entry.type == "article" %}
+        <em>{{ entry.journal }}</em><br>
+        {% elsif entry.type == "inproceedings" %}
+        <em>{{ entry.booktitle }}</em><br>
+        {% elsif entry.type == "book" or entry.type == "inbook" %}
+        <em>{{ entry.publisher }}</em><br>
         {% endif %}
+        {{ entry.year }}
 
-        <li><a data-toggle="collapse" href="#{{key}}-bibtex">BibTeX</a></li>
+        <div id="{{key}}-materials">
+            <ul class="nav nav-pills">
 
-        {% if link %}
-        <li><a href="{{link}}">Download</a></li>
-        {% endif %}
-    </ul>
+                {% if entry.abstract %}
+                <button id="{{key}}-abstract-btn" class="btn btn-primary btn-sm rounded-pill" data-toggle="collapse"
+                    data-target="#{{key}}-abstract" aria-expanded="false" aria-controls="{{key}}-abstract"
+                    style="padding-left:0.7em; padding-right:0.7em;">
+                    Show Abstract
+                </button>
+                <p id="{{key}}-abstract" class="collapse mt-2">{{entry.abstract}}</p>
+                {% endif %}
 
-    {% if entry.abstract %}
-    <p id="{{key}}-abstract" class="collapse">{{entry.abstract}}</p>
-    {% endif %}
+                <button id="{{key}}-bibtex-btn" class="btn btn-primary btn-sm rounded-pill" data-toggle="collapse"
+                    data-target="#{{key}}-bibtex" aria-expanded="false" aria-controls="{{key}}-bibtex"
+                    style="padding-left:0.7em; padding-right:0.7em;">
+                    Show BibTeX
+                </button>
 
-    <pre id="{{key}}-bibtex" class="pre pre-scrollable collapse">{{entry.bibtex}}</pre>
+                {% if entry.pdf %}
+                <button id="{{key}}-pdf-btn" class="btn btn-primary btn-sm rounded-pill"
+                    onclick="window.open('{{ entry.pdf }}', '_blank', 'noopener')"
+                    style="padding-left:0.7em; padding-right:0.7em;">
+                    Access PDF
+                </button>
+                {% endif %}
+            </ul>
 
+
+            <pre id="{{key}}-bibtex" class="pre pre-scrollable collapse">{{entry.bibtex}}</pre>
+
+        </div>
+    </div>
 </div>

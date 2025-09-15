@@ -1,11 +1,23 @@
-"Wills":
+"wills":
   - firstname: ["Andy", "A.", "A. J.", "Andy J."]
     url: https://andywills.info
 
-"Edmunds":
+"edmunds":
   - firstname: ["Charlotte", "C.", "C. E. R.", "Charlotte E. R."]
     url: https://www.ceredmunds.com/
 
-"Spicer":
+"spicer":
   - firstname: ["Stuart", "G.", "S.", "Stuart G."]
     url: https://orcid.org/0000-0001-7585-8886
+
+"hewitt":
+  - firstname: ["Sam", "R.", "C.", "Sam R. C."]
+    url: https://www.samuel-r-hewitt.com/
+
+"hauser":
+  - firstname: ["Tobias", "U.", "T. U.", "Tobias U."]
+    url: https://devcompsy.org/
+
+"marzuki":
+  - firstname: ["Aleya", "A", "A. A.", "Aleya A."]
+    url: https://orcid.org/0000-0002-8497-7112

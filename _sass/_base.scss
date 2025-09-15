@@ -3,6 +3,14 @@
  ******************************************************************************/
 
 // Typography
+@font-face {
+  font-family: 'nimbus_monobold';
+  src: url('/assets/fonts/nimbusmono-bold-webfont.woff2') format('woff2'),
+    url('/assets/fonts/nimbusmono-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 p,
 h1,
@@ -547,7 +555,7 @@ footer.sticky-bottom {
 .publications {
   text-align: left;
   // margin-top: 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   max-width: fit-content;
 
@@ -629,30 +637,26 @@ footer.sticky-bottom {
 
       .author {
         a {
-          font-weight: 300;
+          border-bottom: 1px dashed var(--global-theme-color);
 
           &:hover {
             border-bottom-style: solid;
             text-decoration: none;
-            font-weight: 600;
-
           }
         }
 
         >em {
-          background-color: #222122;
-          color: white;
-          padding: 0.2rem;
-          font-weight: 500;
+          border-bottom: 1px solid;
           font-style: normal;
 
-          &::before {
+          &::after {
             content: '*';
           }
         }
 
         >span.more-authors {
           color: var(--global-text-color-light);
+          border-bottom: 1px dashed var(--global-text-color-light);
           cursor: pointer;
 
           &:hover {
@@ -661,6 +665,42 @@ footer.sticky-bottom {
           }
         }
       }
+
+      // .author {
+      //   a {
+      //     font-weight: 300;
+
+      //     &:hover {
+      //       border-bottom-style: solid;
+      //       text-decoration: none;
+      //       font-weight: 600;
+
+      //     }
+      //   }
+
+      //   >em {
+      //     // background-color: #222122;
+      //     // color: white;
+      //     padding: 0.2rem;
+      //     font-weight: 500;
+      //     font-style: normal;
+      //     text-decoration: underline;
+      //     background-color: var(--global-bg-color);
+      //     &::after {
+      //       content: '*';
+      //     }
+      //   }
+
+      //   >span.more-authors {
+      //     color: var(--global-text-color-light);
+      //     cursor: pointer;
+
+      //     &:hover {
+      //       color: var(--global-text-color);
+      //       border-bottom: 1px dashed var(--global-text-color);
+      //     }
+      //   }
+      // }
 
       .links {
         a.btn {
@@ -725,6 +765,7 @@ footer.sticky-bottom {
     }
   }
 }
+
 
 // Rouge Color Customization
 figure.highlight {
