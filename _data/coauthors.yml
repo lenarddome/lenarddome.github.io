@@ -21,3 +21,15 @@
 "marzuki":
   - firstname: ["Aleya", "A", "A. A.", "Aleya A."]
     url: https://orcid.org/0000-0002-8497-7112
+
+"kadri":
+  - firstname: ["Kenza", "K."]
+    url: https://kenzakadri.github.io/
+
+"wagner":
+  - firstname: ["Ben", "J.", "B. J.", "Ben J."]
+    url: https://scholar.google.com/citations?user=_Kt5v9gAAAAJ&hl=en
+
+"webb":
+  - firstname: ["Andrew", "A."]
+    url: https://www.kyb.tuebingen.mpg.de/person/123158/249684

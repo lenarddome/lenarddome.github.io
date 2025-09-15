@@ -123,6 +123,7 @@
         {% elsif entry.type == "book" or entry.type == "inbook" %}
         <em>{{ entry.publisher }}</em><br>
         {% endif %}
+        <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener" style="color: blue;">{{ entry.doi }}</a><br>
         {{ entry.year }}
 
         <div id="{{key}}-materials">
