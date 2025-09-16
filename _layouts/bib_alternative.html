@@ -117,42 +117,63 @@
 
 
         {% if entry.type == "article" %}
-        <em>{{ entry.journal }}</em><br>
+        <em>{{ entry.journal }}</em>
         {% elsif entry.type == "inproceedings" %}
-        <em>{{ entry.booktitle }}</em><br>
+        <em>{{ entry.booktitle }}</em>
         {% elsif entry.type == "book" or entry.type == "inbook" %}
-        <em>{{ entry.publisher }}</em><br>
+        <em>{{ entry.publisher }}</em>
+        {% elsif entry.type == "thesis" %}
+        <em>{{ entry.school }}</em>
+        {% elsif entry.type == "preprints" %}
+        <em>{{ entry.publisher }}</em>
         {% endif %}
-        <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener" style="color: blue;">{{ entry.doi }}</a><br>
-        {{ entry.year }}
+        {{ entry.year }}.<br>
+        <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener" style="color: blue;">{{ entry.doi
+            }}</a><br>
 
         <div id="{{key}}-materials">
             <ul class="nav nav-pills">
 
                 {% if entry.abstract %}
-                <button id="{{key}}-abstract-btn" class="btn btn-primary btn-sm rounded-pill" data-toggle="collapse"
+                <button id="{{key}}-abstract-btn" class="btn btn-primary btn-lg rounded-pill" data-toggle="collapse"
                     data-target="#{{key}}-abstract" aria-expanded="false" aria-controls="{{key}}-abstract"
-                    style="padding-left:0.7em; padding-right:0.7em;">
-                    Show Abstract
+                    style="padding:0.5em;">
+                    <i class="fa-regular fa-comment"></i>
                 </button>
                 <p id="{{key}}-abstract" class="collapse mt-2">{{entry.abstract}}</p>
                 {% endif %}
 
-                <button id="{{key}}-bibtex-btn" class="btn btn-primary btn-sm rounded-pill" data-toggle="collapse"
+                <button id="{{key}}-bibtex-btn" class="btn btn-primary btn-lg rounded-pill" data-toggle="collapse"
                     data-target="#{{key}}-bibtex" aria-expanded="false" aria-controls="{{key}}-bibtex"
-                    style="padding-left:0.7em; padding-right:0.7em;">
-                    Show BibTeX
+                    style="padding:0.5em;">
+                    <!-- <i class="fa-brands fa-tex"></i> -->
+                    <i class="fa-solid fa-quote-left"></i>
                 </button>
 
                 {% if entry.pdf %}
-                <button id="{{key}}-pdf-btn" class="btn btn-primary btn-sm rounded-pill"
-                    onclick="window.open('{{ entry.pdf }}', '_blank', 'noopener')"
-                    style="padding-left:0.7em; padding-right:0.7em;">
-                    Access PDF
+                <button id="{{key}}-pdf-btn" class="btn btn-primary btn-lg rounded-pill"
+                    onclick="window.open('{{ entry.pdf }}', '_blank', 'noopener')" style="padding:0.5em;">
+                    <i class="fa-regular fa-file-pdf"></i>
                 </button>
                 {% endif %}
+                <!-- {%- if entry.supp %}
+                {%- assign supp_entries = entry.supp | split: "," | map: "strip" -%}
+                {%- if supp_entries.size == 1 -%}
+                <button id="{{key}}-supp-btn" class="btn btn-primary btn-lg rounded-pill"
+                    onclick="window.open('{{ supp_entries[0] }}', '_blank', 'noopener')" style="padding:0.5em;">
+                    <i class="ai ai-open-access ai-lg"></i>
+                </button>
+                {%- else -%}
+                {%- for supp_entry in supp_entries -%}
+                <button id="{{key}}-supp-btn-{{forloop.index}}" class="btn btn-primary btn-lg rounded-pill"
+                    onclick="window.open('{{ supp_entry }}', '_blank', 'noopener')" style="padding:0.5em;">
+                    <i class="ai ai-open-access ai-lg"></i> {{ forloop.index }}
+                </button>
+                {%- endfor -%}
+                {%- endif -%}
+                {% endif %} -->
             </ul>
-
+            <br>
 
             <pre id="{{key}}-bibtex" class="pre pre-scrollable collapse">{{entry.bibtex}}</pre>
 
