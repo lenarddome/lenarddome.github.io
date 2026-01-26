@@ -63,10 +63,10 @@ table.table a {
   }
 }
 
-figure,
-img {
-  max-width: 90vw;
-}
+// figure,
+// img {
+//   max-width: 90vw;
+// }
 
 blockquote {
   background: var(--global-bg-color);
@@ -559,30 +559,7 @@ footer.sticky-bottom {
   font-weight: 400;
   max-width: fit-content;
 
-  h1 {
-    color: var(--global-theme-color);
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
 
-  h2 {
-    margin-bottom: 1rem;
-
-    span {
-      font-size: 1.5rem;
-    }
-  }
-
-  h2.year {
-    color: var(--global-text-color);
-    border-top: 1px solid var(--global-divider-color);
-    padding: 1rem;
-    margin-top: 2rem;
-    margin-bottom: -2rem;
-    text-align: right;
-  }
 
   ol.bibliography {
     max-width: inherit;
@@ -592,6 +569,10 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
+
+      .row {
+        flex-wrap: inherit;
+      }
 
       // margin-bottom: 1.5rem;
       .preview {
