@@ -579,14 +579,15 @@ footer.sticky-bottom {
         width: 90%;
         height: 90%;
         min-width: 75px;
-        max-width: 120px;
+        max-width: 220px;
       }
 
       .abbr {
-        font-size: 1.25rem;
+        font-size: 1rem;
         height: 2rem;
         margin-bottom: 0.5rem;
         text-align: right;
+        max-width: 220px;
 
         abbr {
           display: inline-block;
@@ -604,6 +605,11 @@ footer.sticky-bottom {
               text-decoration: none;
             }
           }
+        }
+
+        .keyword {
+          font-size: 1rem;
+          color: var(--global-text-color-light);
         }
 
         .award {

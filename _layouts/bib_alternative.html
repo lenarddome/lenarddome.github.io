@@ -1,21 +1,6 @@
 ---
 ---
 <div class="row">
-    <div class="col-sm-2 {% if entry.preview %}preview{% else %}abbr{% endif %}">
-        {%- if entry.preview -%}
-        {% if entry.preview contains '://' -%}
-        <img class="preview" src="{{ entry.preview }}">
-        {%- else -%}
-        <img class="preview" src="{{ entry.preview | prepend: '/assets/img/publication_preview/' | relative_url }}">
-        {%- endif -%}
-        {%- elsif entry.abbr -%}
-        {%- if site.data.venues[entry.abbr] -%}
-        <abbr class="badge"><a href="{{site.data.venues[entry.abbr].url}}">{{entry.abbr}}</a></abbr>
-        {%- else -%}
-        <abbr class="badge">{{entry.abbr}}</abbr>
-        {%- endif -%}
-        {%- endif -%}
-    </div>
 
     <div id="{{entry.key}}" class="col-sm-8">
         <strong>{{ entry.title }}</strong><br>
@@ -179,4 +164,55 @@
 
         </div>
     </div>
+
+    <div class="entry-aside col-12 col-md-4 col-lg-3 col-xl-2 {% if entry.preview %}preview{% else %}abbr{% endif %}">
+        {%- if entry.preview -%}
+        {% if entry.preview contains '://' -%}
+        <img class="preview" src="{{ entry.preview }}">
+        {%- else -%}
+        <img class="preview" src="{{ entry.preview | prepend: '/assets/img/publication_preview/' | relative_url }}">
+        {%- endif -%}
+        {%- elsif entry.abbr -%}
+        {%- if site.data.venues[entry.abbr] -%}
+        <abbr class="badge"><a href="{{site.data.venues[entry.abbr].url}}">{{entry.abbr}}</a></abbr>
+        {%- else -%}
+        <abbr class="badge">{{entry.abbr}}</abbr>
+        {%- endif -%}
+        {%- endif -%}
+        {%- if entry.keywords -%}
+        {%- assign keyword_tokens = entry.keywords | split: ',' -%}
+        {%- assign keyword_markup = '' -%}
+        {%- assign keyword_color_map = site.data.keyword_colors | default: {} -%}
+        {%- for keyword in keyword_tokens -%}
+        {%- assign keyword_clean = keyword | strip -%}
+        {%- if keyword_clean == '' -%}
+        {%- continue -%}
+        {%- endif -%}
+        {%- assign keyword_lc = keyword_clean | downcase -%}
+        {%- if site.filtered_bibtex_keywords and site.filtered_bibtex_keywords contains keyword_lc -%}
+        {%- continue -%}
+        {%- endif -%}
+        {%- assign keyword_style = keyword_color_map[keyword_lc] -%}
+        {%- if keyword_style == nil -%}
+        {%- continue -%}
+        {%- endif -%}
+        {%- assign keyword_background = keyword_style.background | default: keyword_style -%}
+        {%- if keyword_background == '' -%}
+        {%- continue -%}
+        {%- endif -%}
+        {%- assign keyword_foreground = keyword_style.foreground | default: '#0f172a' -%}
+        {%- assign keyword_slug = keyword_lc | slugify: 'raw' -%}
+        {%- capture keyword_markup -%}{{ keyword_markup }}<button class="keyword-pill" type="button"
+            data-keyword="{{ keyword_slug }}"
+            style="--keyword-bg: {{ keyword_background }}; --keyword-fg: {{ keyword_foreground }};">{{ keyword_clean
+            }}</button>{%- endcapture -%}
+        {%- endfor -%}
+        {%- unless keyword_markup == '' -%}
+        <div class="entry-keywords keyword-list mt-2">
+            {{- keyword_markup -}}
+        </div>
+        {%- endunless -%}
+        {%- endif -%}
+    </div>
+
 </div>

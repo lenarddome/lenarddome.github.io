@@ -1,0 +1,99 @@
+"associative learning":
+  background: "#d92626"
+  foreground: "#ffffff"
+"categorization":
+  background: "#d94b26"
+  foreground: "#ffffff"
+"cognitive science":
+  background: "#d97026"
+  foreground: "#ffffff"
+"cognitive load":
+  background: "#20a6df"
+  foreground: "#ffffff"
+"computational modelling":
+  background: "#d99526"
+  foreground: "#0f172a"
+"computational psychiatry":
+  background: "#d3d926"
+  foreground: "#0f172a"
+"conceptual questions":
+  background: "#aed926"
+  foreground: "#0f172a"
+"embedding-based regression":
+  background: "#89d926"
+  foreground: "#0f172a"
+"ecological momentary assessment":
+  background: "#20df89"
+  foreground: "#0f172a"
+"ego-depletion":
+  background: "#64d926"
+  foreground: "#0f172a"
+"extrapolation failure":
+  background: "#3fd926"
+  foreground: "#0f172a"
+"formal model":
+  background: "#26d933"
+  foreground: "#ffffff"
+"heterogeneity":
+  background: "#26d957"
+  foreground: "#ffffff"
+"inhibitory control":
+  background: "#26d97c"
+  foreground: "#0f172a"
+"inverse base-rate effect":
+  background: "#26d9a1"
+  foreground: "#0f172a"
+"irrationality":
+  background: "#26d9c6"
+  foreground: "#0f172a"
+"large-languge models":
+  background: "#26c6d9"
+  foreground: "#0f172a"
+"letter cancellation":
+  background: "#26a1d9"
+  foreground: "#ffffff"
+"mental health":
+  background: "#df2076"
+  foreground: "#ffffff"
+"metacognition":
+  background: "#20dfdf"
+  foreground: "#0f172a"
+"model adequacy":
+  background: "#267cd9"
+  foreground: "#ffffff"
+"model evaluation":
+  background: "#2657d9"
+  foreground: "#ffffff"
+"observational learning":
+  background: "#2633d9"
+  foreground: "#ffffff"
+"obsessive-compulsive disorder":
+  background: "#df20af"
+  foreground: "#ffffff"
+"open-source software":
+  background: "#3f26d9"
+  foreground: "#ffffff"
+"out-of-distribution generalization":
+  background: "#6426d9"
+  foreground: "#ffffff"
+"prediction error":
+  background: "#8926d9"
+  foreground: "#ffffff"
+"predictive learning":
+  background: "#ae26d9"
+  foreground: "#ffffff"
+"recognition memory":
+  background: "#d326d9"
+  foreground: "#ffffff"
+"replication":
+  background: "#d926ba"
+  foreground: "#ffffff"
+"scientific software":
+  background: "#d92695"
+  foreground: "#ffffff"
+"uncertainty":
+  background: "#d92670"
+  foreground: "#ffffff"
+"unsupervised learning":
+  background: "#d9264b"
+  foreground: "#ffffff"
