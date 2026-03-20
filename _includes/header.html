@@ -5,8 +5,10 @@
     class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}">
     <div class="container">
 
+      {%- unless page.permalink == '/' %}
       <img src="{{ '/assets/img/prof_pic_old.jpg' | relative_url }}" alt="Avatar" class="avatar-img rounded-circle mr-3"
         style="max-width:60px; max-height:60px; object-fit:cover; vertical-align:middle;">
+      {%- endunless %}
       <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl | prepend: site.url }}/">
         {%- if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name
         }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif -%}

@@ -5,78 +5,72 @@ layout: default
 <!-- about.html -->
 <div class="post">
   <header class="post-header">
-    <!-- <h1 class="post-title">
-
-      {% if page.avatar %}
-      <img src="{{ page.avatar | prepend: 'assets/img/' | relative_url }}" alt="Avatar"
-        class="avatar-img rounded-circle mr-3"
-        style="max-width:80px; max-height:80px; object-fit:cover; vertical-align:middle;">
-      {% endif %}
-
-      {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-      {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
-
-      
-      {% if page.cv_pdf %}
-      <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" target="_blank"
-        rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>
-      {% endif %}
-    </h1> -->
     <p class="desc">{{ page.subtitle }}</p>
   </header>
 
-  <div class="clearfix">
-    {{ content }}
-  </div>
-
   <article>
-    {% if page.profile -%}
-    <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+    {%- if page.profile %}
+    <div style="text-align: center; margin-bottom: 1.5rem;">
       {%- if page.profile.image %}
       {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
-
-      {% if page.profile.image_circular %}
       {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-      {% else %}
-      {%- assign profile_image_class = "img-fluid z-depth-1" -%}
-      {% endif %}
+      <div style="display: inline-block; max-width: 160px;">
+        {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image %}
+      </div>
+      {%- endif %}
 
-      {% include figure.html
-      path=profile_image_path
-      class=profile_image_class
-      alt=page.profile.image -%}
-      {% endif -%}
-      {%- if page.profile.address %}
-      <div class="address">
-        <i class="fas fa-envelope"></i> {{ page.profile.address }}
+      <div style="margin-top: 0.75rem; font-size: 0.85em; line-height: 1.9; color: var(--global-text-color);">
+        {%- if page.profile.position %}
+        <div><strong>{{ page.profile.position }}</strong></div>
+        {%- endif %}
+        {%- if page.profile.affiliation %}
+        <div>{{ page.profile.affiliation }}</div>
+        {%- endif %}
+        {%- if page.profile.email %}
+        <div style="color: var(--global-text-color-light); font-size: 0.9em;">{{ page.profile.email }}</div>
+        {%- endif %}
+      </div>
+
+      {%- if page.social %}
+      <div class="social" style="margin-top: 0.75rem;">
+        <div class="contact-icons">
+          {% include social.html %}
+        </div>
       </div>
       {%- endif %}
     </div>
     {%- endif %}
 
+    <div style="margin-bottom: 2rem;">
+      {{ content }}
+    </div>
+
+    {% include animations.html %}
+
+    <div class="publications" style="margin: 1.5em auto; max-width: 1000px;">
+      <h1>Publications</h1>
+      <br>
+      <ol>
+        {% bibliography -f papers --template bib_apa %}
+      </ol>
+    </div>
+
     {% if page.selected_papers -%}
-    <!-- Selected papers -->
     {%- include selected_papers.html %}
     {%- endif %}
 
     {% if page.news -%}
-    <!-- News -->
     {%- include news.html %}
     {%- endif %}
 
-    {%- if page.social %}
-    <!-- Social -->
+    {%- if page.social and site.contact_note %}
     <div class="social">
-      <div class="contact-icons">
-        {% include social.html %}
-      </div>
-
       <div class="contact-note">
         {{ site.contact_note }}
       </div>
-
     </div>
     {%- endif %}
+
   </article>
 
 </div>
