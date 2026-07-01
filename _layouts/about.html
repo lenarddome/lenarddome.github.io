@@ -45,7 +45,6 @@ layout: default
       {{ content }}
     </div>
 
-    {% include animations.html %}
 
     <div class="publications" style="margin: 1.5em auto; max-width: 1000px;">
       <h1>Publications</h1>
@@ -54,6 +53,8 @@ layout: default
         {% bibliography -f papers --template bib_apa %}
       </ol>
     </div>
+
+    {% include animations.html %}
 
     {% if page.selected_papers -%}
     {%- include selected_papers.html %}
