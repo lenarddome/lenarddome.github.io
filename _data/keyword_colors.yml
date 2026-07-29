@@ -1,3 +1,6 @@
+"aging":
+  background: "#d9bb26"
+  foreground: "#0f172a"
 "associative learning":
   background: "#d92626"
   foreground: "#ffffff"
@@ -52,6 +55,9 @@
 "letter cancellation":
   background: "#26a1d9"
   foreground: "#ffffff"
+"lifespan":
+  background: "#d92635"
+  foreground: "#ffffff"
 "mental health":
   background: "#df2076"
   foreground: "#ffffff"
@@ -76,6 +82,9 @@
 "out-of-distribution generalization":
   background: "#6426d9"
   foreground: "#ffffff"
+"perceptual decision making":
+  background: "#26df20"
+  foreground: "#0f172a"
 "prediction error":
   background: "#8926d9"
   foreground: "#ffffff"

@@ -1,7 +1,7 @@
 ---
 ---
 <li style="margin-bottom: 0.75em; font-size: 1.1em;">
-  {{ reference | replace: "Dome, L.", "<strong style='font-weight: 900;'>Dome, L.</strong>" }}
-  {%- if entry.doi %} <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener">https://doi.org/{{
-    entry.doi }}</a>{% endif %}
+  {% assign doi_url = entry.doi | remove_first: "https://doi.org/" | prepend: "https://doi.org/" %}
+  {% capture doi_link %}<a href="{{ doi_url }}" target="_blank">{{ doi_url }}</a>{% endcapture %}
+  {{ reference | replace: "Dome, L.", "<strong style='font-weight: 900;'>Dome, L.</strong>" | replace: doi_url, doi_link }}
 </li>
