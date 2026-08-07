@@ -1,8 +1,14 @@
+"adaptive clustering":
+  background: "#208fdf"
+  foreground: "#ffffff"
 "aging":
   background: "#d9bb26"
   foreground: "#0f172a"
 "associative learning":
   background: "#d92626"
+  foreground: "#ffffff"
+"auto-associator network":
+  background: "#2069df"
   foreground: "#ffffff"
 "categorization":
   background: "#d94b26"
@@ -70,6 +76,9 @@
 "model evaluation":
   background: "#2657d9"
   foreground: "#ffffff"
+"neural network":
+  background: "#76df20"
+  foreground: "#0f172a"
 "observational learning":
   background: "#2633d9"
   foreground: "#ffffff"
