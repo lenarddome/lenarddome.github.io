@@ -115,3 +115,6 @@
 "unsupervised learning":
   background: "#d9264b"
   foreground: "#ffffff"
+"attention":
+  background: "#29264b"
+  foreground: "#fffff0"
