@@ -836,3 +836,18 @@ html.transition *:after {
 .rounded {
   border-radius: 200rem !important;
 }
+
+// gist.science wordmark, set in the serif face the site itself uses, so the
+// button reads as their brand rather than as a lone letter.
+.gist-wordmark {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 600;
+  font-size: 0.95em;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  // .btn uppercases its label in MDB; the wordmark is lowercase.
+  text-transform: none;
+  // a global `span { color: ... }` rule would otherwise override the
+  // button's white text color.
+  color: inherit;
+}

@@ -141,6 +141,21 @@
                     <i class="fa-regular fa-file-pdf"></i>
                 </button>
                 {% endif %}
+
+                {%- if entry.gist %}
+                {%- if entry.gist contains '://' -%}
+                {%- assign gist_url = entry.gist -%}
+                {%- elsif entry.gist contains 'paper/' -%}
+                {%- assign gist_url = entry.gist | prepend: 'https://gist.science/' -%}
+                {%- else -%}
+                {%- assign gist_url = entry.gist | prepend: 'https://gist.science/paper/' -%}
+                {%- endif -%}
+                <button id="{{key}}-gist-btn" class="btn btn-primary btn-lg rounded-pill"
+                    onclick="window.open('{{ gist_url }}', '_blank', 'noopener')" style="padding:0.5em 0.9em;"
+                    title="Plain language summary on gist.science" aria-label="Plain language summary on gist.science">
+                    <span class="gist-wordmark">gist</span>
+                </button>
+                {% endif %}
                 <!-- {%- if entry.supp %}
                 {%- assign supp_entries = entry.supp | split: "," | map: "strip" -%}
                 {%- if supp_entries.size == 1 -%}
