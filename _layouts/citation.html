@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<!-- _layouts/citation.html -->
+<div class="post">
+
+  <header class="post-header">
+    <p class="post-meta">&larr; <a href="/publications/">All publications</a></p>
+    <h1 class="post-title">{{ page.citation_title }}</h1>
+    <p class="post-description">{{ page.authors_display }}</p>
+  </header>
+
+  <article>
+    <p>
+      {% if page.venue %}<em>{{ page.venue }}</em>{% endif %}
+      {%- if page.volume %}, {{ page.volume }}{% endif -%}
+      {%- if page.pages %} ({{ page.pages }}){% endif -%}
+      {%- if page.venue or page.volume or page.pages %}.{% endif %}
+      {% if page.year %}{{ page.year }}.{% endif %}
+      <span class="text-muted">{{ page.pub_type }}</span>
+    </p>
+
+    {% if page.doi %}
+    <p><a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener">https://doi.org/{{ page.doi }}</a></p>
+    {% endif %}
+
+    {% if page.abstract_text %}
+    <p>{{ page.abstract_text }}</p>
+    {% endif %}
+
+    {% if page.pdf_url %}
+    <p><a href="{{ page.pdf_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm rounded-pill">
+      <i class="fa-regular fa-file-pdf"></i> PDF
+    </a></p>
+    {% endif %}
+  </article>
+
+</div>
