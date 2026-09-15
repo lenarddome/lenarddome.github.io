@@ -3,9 +3,10 @@
   contents:
     - name: Full Name
       value: Lenard Dome
+    - name: Position
+      value: "Postdoctoral Researcher, University of Tübingen"
     - name: Languages
       value: English, Hungarian
-
 
 - title: Scientific Interests
   type: map
@@ -17,16 +18,149 @@
     - name: Open Reproducible Decentralised Science
       value: I am a big promoter and supporter of Open Science practices. Throughout my scientific career, I hosted the ReproducibiliTea journal club for more than two years, I developed multiple R packages to nurture collaboration via implementing general-purpose methods and computational models with reproducible simulations. I delivered training and peer-to-peer support that helped peers and senior staff to adopt Open Science Practices. I also develop freely-available online training/teaching materials.
 
-- title: Grants and Funding
+- title: Academic Positions
   type: time_table
   contents:
-    - year: 2019
-      items: 
-        - Doctoral Training Studentship (1+3) fully funded by the Economic and Social Research Council in collaboartion with the South West Doctoral Training Partnership
+    - year: "2023 -"
+      title: Postdoctoral Researcher
+      institution: "University of Tübingen (Advisor: Tobias Hauser)"
+    - year: "2023 -"
+      title: Guest Scientist
+      institution: Max Planck Institute for Biological Cybernetics
+    - year: "2021 - 2023"
+      title: "Visiting Lecturer, Tutor and Specialist"
+      institution: University of Plymouth
+    - year: "2019 - 2023"
+      title: Teaching Assistant
+      institution: University of Plymouth
+    - year: "2017 - 2019"
+      title: Research Assistant
+      institution: "Line Manager - Andy Wills"
+    - year: "2017 - 2018"
+      title: Research Assistant
+      institution: "Line Manager - Marina Wimmer"
 
-- title: Awards
+- title: Education
   type: time_table
   contents:
+    - year: "2020 - 2023"
+      title: Ph.D. Psychology (Computational Cognitive Science)
+      institution: "University of Plymouth. Straight Pass. Supervisor - Andy Wills."
+      items:
+        - 'Thesis: <a href="https://pearl.plymouth.ac.uk/psy-theses/74" target="_blank" rel="noopener">Testing the adequacy of formal models of an irrational learning effect</a> (defended 2023-09-12)'
+    - year: "2019 - 2020"
+      title: M.Sc. Advanced Psychology
+      institution: "University of Plymouth. Distinction. Supervisor - Patric Bach."
+    - year: "2017 - 2019"
+      title: B.Sc. Psychology
+      institution: "University of Plymouth. First."
+
+- title: Grants and Awards
+  type: time_table
+  contents:
+    - year: 2026
+      items:
+        - Awarded DZPG Travel Grant
+    - year: 2020
+      items:
+        - "Awarded Undergraduate Project Prize, Experimental Psychological Society / British Science Association"
     - year: 2019
-      items: 
-        - BSA / EPS Undergraduate Project Prize Award for 2020
+      items:
+        - "Awarded Doctoral Training Studentship (1+3), ESRC & South West Doctoral Training Partnership. £87,510.62."
+
+- title: Research Software
+  type: nested_list
+  contents:
+    - title: "psp — maintainer, developer"
+      items:
+        - "Implements an n-dimensional parameter space partitioning algorithm for evaluating the global behaviour of formal computational models, as described by Pitt, Kim, Navarro and Myung (2006). 18K downloads."
+    - title: "cpm — maintainer, developer"
+      items:
+        - "A Python package for theory-driven modelling in Computational Psychiatry, providing tools for researchers and clinicians to analyze and model data in the field."
+    - title: "catlearn — senior developer"
+      items:
+        - "An archive of formal models of categorization and learning, plus benchmark datasets to test them against. Houses 14 formal mathematical models of learning and categorization; contributed 8 of them. 57K downloads."
+
+- title: Invited Talks
+  type: time_table
+  contents:
+    - year: 2026
+      title: "MAP Talk: cpm — a Python library for theory-driven modeling in computational psychiatry"
+      institution: "Yale University, USA"
+    - year: 2024
+      title: "Psychiatry Colloquium: cpm — a Python library for theory-driven modeling in computational psychiatry"
+      institution: "University of Tübingen, Germany"
+    - year: 2021
+      title: "Undergraduate Project Prize Talk (2020): Clearing confounds from the inverse base-rate effect - irrationality and concurrent load"
+      institution: "British Science Association / Experimental Psychological Society, UK"
+    - year: 2021
+      title: "Cognitive and Affective Neuroscience Group Seminar: The role of base rates in categorizing ambiguity and forming stereotypes"
+      institution: "Liverpool John Moores University, UK"
+
+- title: Conference Presentations and Talks
+  type: time_table
+  contents:
+    - year: 2026
+      items:
+        - "Research Colloquium. Tübingen, Germany."
+        - "German Mental Health Centre (DZPG) ECS Congress. Berlin, Germany."
+    - year: 2025
+      items:
+        - "Computational Psychiatry Conference. Tübingen, Germany."
+    - year: 2023
+      items:
+        - "45th Annual Conference of the Cognitive Science Society. Sydney, Australia."
+        - "MathPsych/ICCM/EMPG. Amsterdam, The Netherlands."
+        - "Meeting of the Experimental Psychology Society. Plymouth, UK."
+    - year: 2022
+      items:
+        - "22nd Associative Learning Symposium. Gregynog Hall, Wales, UK."
+    - year: 2021
+      items:
+        - "Cognitive Science Conference. Online."
+    - year: 2019
+      items:
+        - "The British Psychological Society - South West Undergraduate Conference. Plymouth, UK."
+
+- title: Supervision and Teaching
+  type: time_table
+  contents:
+    - year: "2025 - 2026"
+      title: CaCTüS internship student supervision
+      institution: "Max Planck Institute for Biological Cybernetics, Germany"
+    - year: "2024 - 2026"
+      title: "Seminar: Introduction to computational modeling (B.Sc., M.Sc.)"
+      institution: "University of Tübingen, Germany"
+    - year: 2025
+      title: "Workshop: Introduction to computational modeling (M.Sc., Ph.D., Postdocs)"
+      institution: "University of Tübingen, Germany"
+    - year: "2022 - 2023"
+      title: "Workshop: Introduction to quantitative analysis with R (DClinPsy)"
+      institution: "University of Plymouth, UK"
+    - year: "2021 - 2023"
+      title: Final-year project supervision (B.Sc.)
+      institution: "University of Plymouth, UK"
+    - year: "2021 - 2023"
+      title: "Seminar: Bayesian sample size estimation / Data visualization in R (B.Sc.)"
+      institution: "University of Plymouth, UK"
+    - year: "2021 - 2023"
+      title: Research methods in R (B.Sc.)
+      institution: "University of Plymouth, UK"
+
+- title: Society Memberships
+  type: list
+  contents:
+    - Cognitive Science Society
+    - Experimental Psychological Society
+    - German Centrum for Mental Health (DZPG) ECS
+    - European Brain and Behaviour Society
+
+- title: Peer Review
+  type: list
+  contents:
+    - The American Statistician
+
+- title: Publications
+  type: list
+  contents:
+    - 'See the full, actively-maintained list on the <a href="/publications/">Publications page</a>.'
