@@ -14,8 +14,9 @@ layout: default
       {%- if page.profile.image %}
       {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
       {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+      {%- assign profile_image_alt = site.first_name | append: ' ' | append: site.last_name -%}
       <div style="display: inline-block; max-width: 160px;">
-        {% include figure.html path=profile_image_path class=profile_image_class alt=page.profile.image %}
+        {% include figure.html path=profile_image_path class=profile_image_class alt=profile_image_alt %}
       </div>
       {%- endif %}
 
