@@ -55,7 +55,7 @@
 "irrationality":
   background: "#26d9c6"
   foreground: "#0f172a"
-"large-languge models":
+"large-language models":
   background: "#26c6d9"
   foreground: "#0f172a"
 "letter cancellation":
@@ -73,9 +73,9 @@
 "model adequacy":
   background: "#267cd9"
   foreground: "#ffffff"
-"model evaluation":
-  background: "#2657d9"
-  foreground: "#ffffff"
+# "model evaluation":
+#   background: "#2657d9"
+#   foreground: "#ffffff"
 "neural network":
   background: "#76df20"
   foreground: "#0f172a"
@@ -94,10 +94,13 @@
 "perceptual decision making":
   background: "#26df20"
   foreground: "#0f172a"
+"python":
+  background: "#26d9bb"
+  foreground: "#0f172a"
 "prediction error":
   background: "#8926d9"
   foreground: "#ffffff"
-"predictive learning":
+"supervised learning":
   background: "#ae26d9"
   foreground: "#ffffff"
 "recognition memory":

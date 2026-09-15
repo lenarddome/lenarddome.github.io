@@ -10,6 +10,8 @@ nav_order: 1
 <!-- _pages/publications.md -->
 <div class="publications">
 
+{% include keyword_histogram.html %}
+
 {% bibliography -f {{ site.scholar.bibliography }} %}
 
 </div>

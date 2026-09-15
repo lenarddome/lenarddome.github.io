@@ -1,26 +1,67 @@
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
-        var pills = Array.prototype.slice.call(document.querySelectorAll('.keyword-pill'));
-        if (!pills.length) {
+        var controls = Array.prototype.slice.call(
+            document.querySelectorAll('.keyword-pill, .keyword-histogram-bar')
+        );
+        if (!controls.length) {
             return;
         }
 
+        var entries = Array.prototype.slice.call(document.querySelectorAll('.bibliography > li'));
         var lockedKey = null;
 
         function applyHighlight(key) {
-            pills.forEach(function (pill) {
-                var matches = pill.dataset.keyword === key;
-                pill.classList.toggle('is-highlighted', matches);
-                pill.classList.toggle('is-muted', !matches);
+            controls.forEach(function (control) {
+                var matches = control.dataset.keyword === key;
+                control.classList.toggle('is-highlighted', matches);
+                control.classList.toggle('is-muted', !matches);
             });
         }
 
         function clearHighlight() {
-            lockedKey = null;
-            pills.forEach(function (pill) {
-                pill.classList.remove('is-highlighted');
-                pill.classList.remove('is-muted');
+            controls.forEach(function (control) {
+                control.classList.remove('is-highlighted');
+                control.classList.remove('is-muted');
             });
+        }
+
+        // Histogram bars sit above the whole list, so locking one also
+        // filters the bibliography down to entries carrying that keyword.
+        // Individual keyword pills only highlight (an entry can't hide itself).
+        function applyFilter(key) {
+            entries.forEach(function (entry) {
+                var hasMatch = !!entry.querySelector('.keyword-pill[data-keyword="' + key + '"]');
+                entry.classList.toggle('is-hidden', !hasMatch);
+            });
+        }
+
+        function clearFilter() {
+            entries.forEach(function (entry) {
+                entry.classList.remove('is-hidden');
+            });
+        }
+
+        function setPressed(key) {
+            controls.forEach(function (control) {
+                if (!control.classList.contains('keyword-histogram-bar')) {
+                    return;
+                }
+                control.setAttribute('aria-pressed', control.dataset.keyword === key ? 'true' : 'false');
+            });
+        }
+
+        function lock(key) {
+            lockedKey = key;
+            applyHighlight(key);
+            applyFilter(key);
+            setPressed(key);
+        }
+
+        function unlock() {
+            lockedKey = null;
+            clearHighlight();
+            clearFilter();
+            setPressed(null);
         }
 
         function handleEnter(event) {
@@ -42,21 +83,11 @@
         }
 
         function handleFocus(event) {
-            if (lockedKey) {
-                return;
-            }
-            var key = event.currentTarget.dataset.keyword;
-            if (!key) {
-                return;
-            }
-            applyHighlight(key);
+            handleEnter(event);
         }
 
         function handleBlur() {
-            if (lockedKey) {
-                return;
-            }
-            clearHighlight();
+            handleLeave();
         }
 
         function handleClick(event) {
@@ -65,32 +96,31 @@
                 return;
             }
             if (lockedKey === key) {
-                clearHighlight();
+                unlock();
             } else {
-                lockedKey = key;
-                applyHighlight(key);
+                lock(key);
             }
         }
 
-        pills.forEach(function (pill) {
-            pill.addEventListener('mouseenter', handleEnter);
-            pill.addEventListener('mouseleave', handleLeave);
-            pill.addEventListener('focus', handleFocus);
-            pill.addEventListener('blur', handleBlur);
-            pill.addEventListener('click', handleClick);
+        controls.forEach(function (control) {
+            control.addEventListener('mouseenter', handleEnter);
+            control.addEventListener('mouseleave', handleLeave);
+            control.addEventListener('focus', handleFocus);
+            control.addEventListener('blur', handleBlur);
+            control.addEventListener('click', handleClick);
         });
 
         document.addEventListener('click', function (event) {
-            if (!event.target.closest('.keyword-pill')) {
+            if (!event.target.closest('.keyword-pill, .keyword-histogram-bar')) {
                 if (lockedKey) {
-                    clearHighlight();
+                    unlock();
                 }
             }
         });
 
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape' && lockedKey) {
-                clearHighlight();
+                unlock();
             }
         });
     });
