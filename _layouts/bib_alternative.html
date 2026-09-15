@@ -113,7 +113,7 @@
         <em>{{ entry.publisher }}</em>
         {% endif %}
         {{ entry.year }}.<br>
-        <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener" style="color: blue;">{{ entry.doi
+        <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener">{{ entry.doi
             }}</a><br>
 
         <div id="{{key}}-materials">
@@ -122,7 +122,7 @@
                 {% if entry.abstract %}
                 <button id="{{key}}-abstract-btn" class="btn btn-primary btn-lg rounded-pill" data-toggle="collapse"
                     data-target="#{{key}}-abstract" aria-expanded="false" aria-controls="{{key}}-abstract"
-                    style="padding:0.5em;">
+                    aria-label="Show abstract" title="Show abstract" style="padding:0.5em;">
                     <i class="fa-regular fa-comment"></i>
                 </button>
                 <p id="{{key}}-abstract" class="collapse mt-2">{{entry.abstract}}</p>
@@ -130,14 +130,15 @@
 
                 <button id="{{key}}-bibtex-btn" class="btn btn-primary btn-lg rounded-pill" data-toggle="collapse"
                     data-target="#{{key}}-bibtex" aria-expanded="false" aria-controls="{{key}}-bibtex"
-                    style="padding:0.5em;">
+                    aria-label="Show BibTeX citation" title="Show BibTeX citation" style="padding:0.5em;">
                     <!-- <i class="fa-brands fa-tex"></i> -->
                     <i class="fa-solid fa-quote-left"></i>
                 </button>
 
                 {% if entry.pdf %}
                 <button id="{{key}}-pdf-btn" class="btn btn-primary btn-lg rounded-pill"
-                    onclick="window.open('{{ entry.pdf }}', '_blank', 'noopener')" style="padding:0.5em;">
+                    onclick="window.open('{{ entry.pdf }}', '_blank', 'noopener')"
+                    aria-label="Open PDF" title="Open PDF" style="padding:0.5em;">
                     <i class="fa-regular fa-file-pdf"></i>
                 </button>
                 {% endif %}

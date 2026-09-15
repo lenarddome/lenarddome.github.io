@@ -23,7 +23,7 @@ $pink-color:          #f92080 !default;
 $pink-color-light:    #ffdddd !default;
 $yellow-color:        #efcc00 !default;
 
-$grey-color:          #828282 !default;
+$grey-color:          #6b6b6b !default; // darkened from #828282 for WCAG AA contrast on white (~4.5:1)
 $grey-color-light:    #c0c0c0;
 $grey-color-dark:     #1C1C1D;
 $grey-900:            #212529;
