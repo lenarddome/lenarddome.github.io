@@ -1,5 +1,6 @@
 ---
 layout: page
+permalink: /videos/
 title: videos
 description: A list of resources, videos of presentations, public engagements.
 nav: true
