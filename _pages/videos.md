@@ -8,7 +8,7 @@ nav_order: 5
 
 ## Computational Modelling Lab, BRIC
 
-A brief promotational video featuring lab head [Prof. Andy Wills](andywills.info) introducing our work in the lab and myself showcasing some of my resarch.
+A brief promotional video featuring lab head [Prof. Andy Wills](https://www.andywills.info) introducing our work in the lab and myself showcasing some of my research.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LQwjDjPg2rA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
