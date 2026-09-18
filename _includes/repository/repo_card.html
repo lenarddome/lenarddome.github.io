@@ -25,6 +25,11 @@
     {%- if repo.license %}
     <span class="repo-card-license">{{ repo.license }}</span>
     {%- endif %}
+    {%- if repo.downloads_formatted %}
+    <span class="repo-card-downloads" title="{{ repo.downloads_source }} downloads">
+      <i class="fa-solid fa-download"></i> {{ repo.downloads_formatted }}
+    </span>
+    {%- endif %}
     {%- if repo.homepage %}
     <a href="{{ repo.homepage }}" class="repo-card-link">Website</a>
     {%- endif %}
