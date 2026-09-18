@@ -21,7 +21,7 @@ layout: default
     </p>
 
     {% if page.doi %}
-    <p><a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener">https://doi.org/{{ page.doi }}</a></p>
+    <p><a href="https://doi.org/{{ page.doi }}">https://doi.org/{{ page.doi }}</a></p>
     {% endif %}
 
     {% if page.abstract_text %}
@@ -29,7 +29,7 @@ layout: default
     {% endif %}
 
     {% if page.pdf_url %}
-    <p><a href="{{ page.pdf_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm rounded-pill">
+    <p><a href="{{ page.pdf_url }}" class="btn btn-primary btn-sm rounded-pill">
       <i class="fa-regular fa-file-pdf"></i> PDF
     </a></p>
     {% endif %}
