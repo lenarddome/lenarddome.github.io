@@ -1,4 +1,4 @@
-"adaptive clustering":
+"exemplar-based models":
   background: "#208fdf"
   foreground: "#ffffff"
 "aging":
@@ -99,6 +99,12 @@
   foreground: "#0f172a"
 "prediction error":
   background: "#8926d9"
+  foreground: "#ffffff"
+"reinforcement learning":
+  background: "#d9269d"
+  foreground: "#ffffff"
+"signal detection theory":
+  background: "#2680d9"
   foreground: "#ffffff"
 "supervised learning":
   background: "#ae26d9"
