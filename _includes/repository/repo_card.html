@@ -1,0 +1,35 @@
+{%- assign repo = include.repository -%}
+<div class="repo-card">
+  <div class="repo-card-head">
+    <a href="{{ repo.html_url }}" class="repo-card-name">
+      <i class="fa-solid fa-code-branch"></i>
+      {%- if repo.owner and site.data.repositories.github_users contains repo.owner -%}
+        {{ repo.name }}
+      {%- else -%}
+        {{ repo.owner }}/{{ repo.name }}
+      {%- endif -%}
+    </a>
+    {%- if repo.stars %}
+    <span class="repo-card-stars" title="GitHub stars"><i class="fa-solid fa-star"></i> {{ repo.stars }}</span>
+    {%- endif %}
+  </div>
+
+  {%- if repo.description %}
+  <p class="repo-card-desc">{{ repo.description }}</p>
+  {%- endif %}
+
+  <div class="repo-card-foot">
+    {%- if repo.language %}
+    <span class="repo-card-lang"><span class="repo-card-lang-dot"></span>{{ repo.language }}</span>
+    {%- endif %}
+    {%- if repo.license %}
+    <span class="repo-card-license">{{ repo.license }}</span>
+    {%- endif %}
+    {%- if repo.homepage %}
+    <a href="{{ repo.homepage }}" class="repo-card-link">Website</a>
+    {%- endif %}
+    {%- if repo.detail_url %}
+    <a href="{{ repo.detail_url | relative_url }}" class="repo-card-link">More &rarr;</a>
+    {%- endif %}
+  </div>
+</div>

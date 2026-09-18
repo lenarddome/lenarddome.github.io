@@ -260,3 +260,95 @@ body.sticky-bottom-footer {
     grid-template-columns: 1fr;
   }
 }
+
+// GitHub repository cards on the software page. Data comes from the GitHub
+// API at build time (see _plugins/github_repos.rb) rather than the
+// third-party card-image service this replaced.
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.repo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.15rem;
+  border-radius: 10px;
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+}
+
+.repo-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.repo-card-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--global-text-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repo-card-name i {
+  color: var(--global-text-color-light);
+  margin-right: 0.3rem;
+  font-size: 0.85em;
+}
+
+.repo-card-name:hover {
+  color: var(--global-theme-color);
+}
+
+.repo-card-stars {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+  white-space: nowrap;
+}
+
+.repo-card-stars i {
+  color: #e3b341;
+}
+
+.repo-card-desc {
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.repo-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--global-text-color-light);
+}
+
+.repo-card-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.repo-card-lang-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--global-theme-color);
+  display: inline-block;
+}
+
+.repo-card-link {
+  color: var(--global-theme-color);
+  font-weight: 600;
+}

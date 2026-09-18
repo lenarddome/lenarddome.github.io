@@ -1,8 +1,7 @@
 ---
-layout: post
+layout: page
 title: psp [aut, cre]
 description:  Implements a parameter space partitioning algorithm for evaluating the global behaviour of computational models as described by Pitt, Kim, Navarro and Myung (2006)
-img: /assets/img/software_markus-spiske-cvBBO4PzWPg-unsplash.jpg
 importance: 1
 category: cognitive-science
 ---
@@ -15,7 +14,10 @@ category: cognitive-science
 
 <br>
 
-<blockquote class="twitter-tweet" data-dnt="true" data-theme="dark"><p lang="en" dir="ltr">My first <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/rpackage?src=hash&amp;ref_src=twsrc%5Etfw">#rpackage</a> is out on CRAN!<br>The package implements a global qualitative <a href="https://twitter.com/hashtag/modelevaluation?src=hash&amp;ref_src=twsrc%5Etfw">#modelevaluation</a><br>tool as described by Pitt, Kim, Navarro and Myung (2006). It also works in n dimensions. :)<a href="https://t.co/XFVyyNgUoi">https://t.co/XFVyyNgUoi</a><br><br>Give it a whirl with install.packages(&quot;psp&quot;)!</p>&mdash; Lénárd Döme (@lenarddome) <a href="https://twitter.com/lenarddome/status/1407269362667560960?ref_src=twsrc%5Etfw">June 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote>
+My first #rstats #rpackage is out on CRAN! The package implements a global qualitative #modelevaluation tool as described by Pitt, Kim, Navarro and Myung (2006). It also works in n dimensions. :) Give it a whirl with <code>install.packages("psp")</code>!
+<footer>&mdash; Lénárd Döme (@lenarddome), <a href="https://twitter.com/lenarddome/status/1407269362667560960">June 22, 2021</a></footer>
+</blockquote>
 
 <br>
 

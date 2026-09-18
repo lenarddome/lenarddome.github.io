@@ -13,10 +13,10 @@ I am keen on developing scientific software. In Psychology and probably Cognitiv
 
 ## GitHub Repositories
 
-{% if site.data.repositories.github_repos %}
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for repo in site.data.repositories.github_repos %}
-    {% include repository/repo.html repository=repo %}
+{% if site.data.github_repos %}
+<div class="repo-grid">
+  {% for repo in site.data.github_repos %}
+    {% include repository/repo_card.html repository=repo %}
   {% endfor %}
-{% endif %}
 </div>
+{% endif %}
