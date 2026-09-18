@@ -219,9 +219,8 @@
         {%- assign keyword_foreground = keyword_style.foreground | default: '#0f172a' -%}
         {%- assign keyword_slug = keyword_lc | slugify: 'raw' -%}
         {%- capture keyword_markup -%}{{ keyword_markup }}<button class="keyword-pill" type="button"
-            data-keyword="{{ keyword_slug }}"
-            style="--keyword-bg: {{ keyword_background }}; --keyword-fg: {{ keyword_foreground }};">{{ keyword_clean
-            }}</button>{%- endcapture -%}
+            data-keyword="{{ keyword_slug }}" title="{{ keyword_clean }}" aria-label="{{ keyword_clean }}"
+            style="--keyword-bg: {{ keyword_background }}; --keyword-fg: {{ keyword_foreground }};"></button>{%- endcapture -%}
         {%- endfor -%}
         {%- unless keyword_markup == '' -%}
         <div class="entry-keywords keyword-list mt-2">

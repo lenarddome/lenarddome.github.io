@@ -95,27 +95,23 @@ body.sticky-bottom-footer {
 .keyword-pill {
   appearance: none;
   border: none;
-  border-radius: 10px;
-  padding: 0.2rem 0.85rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  padding: 0;
   background-color: var(--keyword-bg, #312e81);
   color: var(--keyword-fg, #f8fafc);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, background-color 0.15s ease;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: none;
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .keyword-pill:hover,
 .keyword-pill:focus-visible {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.28);
+  transform: scale(1.25);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.35);
 }
 
 .keyword-pill:focus-visible {
@@ -124,8 +120,8 @@ body.sticky-bottom-footer {
 }
 
 .keyword-pill.is-highlighted {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.35);
+  transform: scale(1.4);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.4);
 }
 
 .keyword-pill.is-muted {
@@ -134,7 +130,7 @@ body.sticky-bottom-footer {
 }
 
 .keyword-pill:active {
-  transform: translateY(0);
+  transform: scale(1);
 }
 
 // Keyword frequency histogram, shown above the publication list.
