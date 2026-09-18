@@ -45,15 +45,13 @@ module Jekyll
         cached = cache[slug] || {}
 
         github = fetch_github(slug) || extract_github_fields(cached) || fallback_github(slug)
-        downloads, downloads_source = fetch_downloads(entry)
-        downloads ||= cached['downloads']
-        downloads_source ||= cached['downloads_source']
+        downloads = fetch_downloads(entry)
+        downloads['downloads'] ||= cached['downloads']
+        downloads['downloads_formatted'] ||= cached['downloads_formatted']
+        downloads['downloads_source'] ||= cached['downloads_source']
 
-        github.merge(
+        github.merge(downloads).merge(
           'slug' => slug,
-          'downloads' => downloads,
-          'downloads_formatted' => format_number(downloads),
-          'downloads_source' => downloads_source,
           'detail_url' => software_slugs[github['name'].to_s.downcase]
         )
       end
@@ -131,25 +129,69 @@ module Jekyll
       }
     end
 
+    EMPTY_DOWNLOADS = { 'downloads' => nil, 'downloads_formatted' => nil, 'downloads_source' => nil }.freeze
+
     def fetch_downloads(entry)
-      return [nil, nil] unless entry.is_a?(Hash)
+      return EMPTY_DOWNLOADS.dup unless entry.is_a?(Hash)
 
       if entry['cran']
-        [get_json("https://cranlogs.r-pkg.org/downloads/total/2000-01-01:2099-12-31/#{entry['cran']}")
-           &.first&.dig('downloads'), 'CRAN']
+        fetch_cran_downloads(entry['cran'])
       elsif entry['pypi']
-        data = get_json("https://pypistats.org/api/packages/#{entry['pypi']}/overall")&.dig('data')
-        total = data&.select { |r| r['category'] == 'with_mirrors' }&.sum { |r| r['downloads'] }
-        [total, 'PyPI']
+        fetch_pypi_downloads(entry['pypi'])
       else
-        [nil, nil]
+        EMPTY_DOWNLOADS.dup
       end
     rescue StandardError => e
       Jekyll.logger.warn 'GithubRepos:', "download count failed (#{e.class}: #{e.message}), falling back"
-      [nil, nil]
+      EMPTY_DOWNLOADS.dup
+    end
+
+    # cranlogs.r-pkg.org's grand-total range gives an exact all-time count -
+    # matches what CRAN's own download badges show.
+    def fetch_cran_downloads(package)
+      total = get_json("https://cranlogs.r-pkg.org/downloads/total/2000-01-01:2099-12-31/#{package}")
+                &.first&.dig('downloads')
+      { 'downloads' => total, 'downloads_formatted' => format_number(total), 'downloads_source' => 'CRAN' }
+    end
+
+    # PyPI has no free, unauthenticated, exact all-time count: pypistats.org
+    # is exact but only keeps a rolling ~180-day window (which undercounts a
+    # package's real lifetime total), and pepy.tech's exact API needs a key.
+    # pepy.tech's public badge *is* all-time and needs no key, but only
+    # returns an abbreviated figure ("3k", "1.2m") - shown as-is rather than
+    # converted to a fake-precise number, since the badge doesn't expose the
+    # rounding it used.
+    def fetch_pypi_downloads(package)
+      svg = get_text("https://static.pepy.tech/badge/#{package}")
+      values = svg&.scan(%r{<text[^>]*>([^<]*)</text>})&.flatten&.uniq
+      label = values&.last
+
+      formatted = label && (label =~ /[km]\z/i ? "~#{label.upcase}" : label)
+
+      {
+        'downloads' => parse_abbreviated_count(label),
+        'downloads_formatted' => formatted,
+        'downloads_source' => 'PyPI'
+      }
+    end
+
+    # "3k" -> 3000, "1.2m" -> 1200000, "179" -> 179; nil/unparseable -> nil.
+    def parse_abbreviated_count(label)
+      return nil unless label
+
+      match = label.strip.downcase.match(/\A([\d.]+)([km]?)\z/)
+      return nil unless match
+
+      multiplier = { 'k' => 1_000, 'm' => 1_000_000 }.fetch(match[2], 1)
+      (match[1].to_f * multiplier).round
     end
 
     def get_json(url)
+      body = get_text(url)
+      body && JSON.parse(body)
+    end
+
+    def get_text(url)
       uri = URI(url)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
@@ -161,7 +203,7 @@ module Jekyll
       response = http.request(request)
       return nil unless response.is_a?(Net::HTTPSuccess)
 
-      JSON.parse(response.body)
+      response.body
     end
 
     # Comma-groups a number for display (18175 -> "18,175"); nil stays nil.
