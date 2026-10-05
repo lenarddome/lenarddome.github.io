@@ -17,9 +17,8 @@ module Jekyll
   #
   # Exposes site.data['github_repos'] - one entry per repo, in the same
   # order, with 'stars', 'description', 'language', 'license', 'html_url',
-  # 'homepage', 'downloads', 'downloads_source' ("CRAN"/"PyPI", or nil when
-  # no registry is declared or the count wasn't available), and (when a
-  # matching _software/<name>.markdown exists) 'detail_url'.
+  # 'homepage', 'downloads' and 'downloads_source' ("CRAN"/"PyPI", or nil
+  # when no registry is declared or the count wasn't available).
   #
   # Network calls happen once per build. A local cache
   # (.jekyll-cache/github_repos.json) is read as a fallback whenever a call
@@ -38,7 +37,6 @@ module Jekyll
       return if entries.empty?
 
       cache = load_cache
-      software_slugs = software_detail_urls(site)
 
       fetched = entries.map do |entry|
         slug = entry['repo'] || entry.to_s
@@ -50,10 +48,7 @@ module Jekyll
         downloads['downloads_formatted'] ||= cached['downloads_formatted']
         downloads['downloads_source'] ||= cached['downloads_source']
 
-        github.merge(downloads).merge(
-          'slug' => slug,
-          'detail_url' => software_slugs[github['name'].to_s.downcase]
-        )
+        github.merge(downloads).merge('slug' => slug)
       end
 
       save_cache(fetched)
@@ -61,15 +56,6 @@ module Jekyll
     end
 
     private
-
-    # Maps a repo name (e.g. "psp") to its /software/psp/ page, when a
-    # matching entry exists in the software collection.
-    def software_detail_urls(site)
-      docs = site.collections['software'] ? site.collections['software'].docs : []
-      docs.each_with_object({}) do |doc, map|
-        map[doc.basename_without_ext.downcase] = doc.url
-      end
-    end
 
     def fetch_github(slug)
       uri = URI("https://api.github.com/repos/#{slug}")
