@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches: [source]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1  # Ruby version comes from .ruby-version
+        with:
+          bundler-cache: true
+      - uses: actions/configure-pages@v6
+      # _plugins/github_repos.rb falls back to this cache when the GitHub,
+      # CRAN or PyPI APIs don't answer.
+      - uses: actions/cache@v6
+        with:
+          path: .jekyll-cache
+          key: jekyll-cache-${{ github.run_id }}
+          restore-keys: jekyll-cache-
+      - name: Build
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-pages-artifact@v5
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,4 +1,12 @@
 source 'https://rubygems.org'
+
+# Unbundled from the standard library in Ruby 3.4; Jekyll and its plugins still need them.
+gem 'base64'
+gem 'bigdecimal'
+gem 'csv'
+gem 'logger'
+gem 'observer'
+
 group :jekyll_plugins do
     gem 'jekyll'
     gem 'jekyll-archives'

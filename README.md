@@ -13,6 +13,8 @@ Source for [lenarddome.com](https://lenarddome.com), a Jekyll site built on the
 
 ## Local development
 
+Needs the Ruby version in `.ruby-version` (e.g. `chruby 3.4.10`).
+
 ```bash
 bundle install
 bundle exec jekyll serve
@@ -20,5 +22,10 @@ bundle exec jekyll serve
 
 ## Deploy
 
-Work happens on the `source` branch. `bin/deploy` builds the site and pushes it
-to `gh-pages`, which GitHub Pages serves.
+Pushing to `source` runs `.github/workflows/deploy.yml`, which builds the site
+and publishes it to GitHub Pages. Dependabot opens monthly PRs for gem and
+Actions updates.
+
+Fonts, icons and the code-highlighting theme are self-hosted under
+`assets/vendor/` and `assets/css/highlight/`; MathJax only loads on pages with
+`math: true` in their front matter.
