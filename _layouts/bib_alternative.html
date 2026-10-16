@@ -1,5 +1,6 @@
 ---
 ---
+{% include pub_number.html index=index %}
 <div class="row">
 
     <div id="{{entry.key}}" class="col-sm-8">
@@ -78,12 +79,12 @@
             {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
             , and
             <span class="more-authors" title="click to view {{ more_authors_hide }}" onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
+              var element = this;
+              element.title = '';
+              var more_authors_text = element.textContent == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                element.innerHTML = more_authors_text.substring(0, cursorPosition + 1);
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
@@ -93,9 +94,7 @@
             </span>
             {% endif %}
             {% if entry.annotation %}
-            <i class="fa-solid fa-circle-info ml-1" data-toggle="popover" data-placement="top" data-html="true"
-                data-content="{{ entry.annotation | escape }}">
-            </i>
+            <i class="fa-solid fa-circle-info" style="margin-left: 0.25rem;" title="{{ entry.annotation | strip_html | escape }}"></i>
             {% endif %}
         </div>
 
@@ -113,36 +112,21 @@
         <em>{{ entry.publisher }}</em>
         {% endif %}
         {{ entry.year }}.<br>
-        <a href="https://doi.org/{{ entry.doi }}">{{ entry.doi
-            }}</a><br>
-
         <div id="{{key}}-materials">
-            <ul class="nav nav-pills">
-
-                {% if entry.abstract %}
-                <button id="{{key}}-abstract-btn" class="btn btn-primary btn-lg rounded-pill" data-toggle="collapse"
-                    data-target="#{{key}}-abstract" aria-expanded="false" aria-controls="{{key}}-abstract"
-                    aria-label="Show abstract" title="Show abstract" style="padding:0.5em;">
-                    <i class="fa-regular fa-comment"></i>
-                </button>
-                <p id="{{key}}-abstract" class="collapse mt-2">{{entry.abstract}}</p>
-                {% endif %}
-
-                <button id="{{key}}-bibtex-btn" class="btn btn-primary btn-lg rounded-pill" data-toggle="collapse"
-                    data-target="#{{key}}-bibtex" aria-expanded="false" aria-controls="{{key}}-bibtex"
-                    aria-label="Show BibTeX citation" title="Show BibTeX citation" style="padding:0.5em;">
-                    <!-- <i class="fa-brands fa-tex"></i> -->
-                    <i class="fa-solid fa-quote-left"></i>
-                </button>
-
-                {% if entry.pdf %}
-                <button id="{{key}}-pdf-btn" class="btn btn-primary btn-lg rounded-pill"
-                    onclick="window.open('{{ entry.pdf }}', '_blank', 'noopener')"
-                    aria-label="Open PDF" title="Open PDF" style="padding:0.5em;">
-                    <i class="fa-regular fa-file-pdf"></i>
-                </button>
-                {% endif %}
-
+            <div class="pub-links">
+                {%- if entry.doi %}
+                <a class="pub-doi" href="https://doi.org/{{ entry.doi }}">{{ entry.doi }}</a>
+                {%- endif %}
+                <span class="pub-actions">
+                {%- if entry.abstract %}
+                <button type="button" id="{{key}}-abstract-btn" class="pub-action" data-toggle="collapse"
+                    data-target="#{{key}}-abstract" aria-expanded="false" aria-controls="{{key}}-abstract">abstract</button>
+                {%- endif %}
+                <button type="button" id="{{key}}-bibtex-btn" class="pub-action" data-toggle="collapse"
+                    data-target="#{{key}}-bibtex" aria-expanded="false" aria-controls="{{key}}-bibtex">bibtex</button>
+                {%- if entry.pdf %}
+                <a id="{{key}}-pdf-btn" class="pub-action" href="{{ entry.pdf }}" target="_blank" rel="noopener">pdf</a>
+                {%- endif %}
                 {%- if entry.gist %}
                 {%- if entry.gist contains '://' -%}
                 {%- assign gist_url = entry.gist -%}
@@ -150,13 +134,10 @@
                 {%- assign gist_url = entry.gist | prepend: 'https://gist.science/' -%}
                 {%- else -%}
                 {%- assign gist_url = entry.gist | prepend: 'https://gist.science/paper/' -%}
-                {%- endif -%}
-                <button id="{{key}}-gist-btn" class="btn btn-primary btn-lg rounded-pill"
-                    onclick="window.open('{{ gist_url }}', '_blank', 'noopener')" style="padding:0.5em 0.9em;"
-                    title="Plain language summary on gist.science" aria-label="Plain language summary on gist.science">
-                    <span class="gist-wordmark">gist</span>
-                </button>
-                {% endif %}
+                {%- endif %}
+                <a id="{{key}}-gist-btn" class="pub-action" href="{{ gist_url }}" target="_blank" rel="noopener"
+                    title="Plain language summary on gist.science">gist</a>
+                {%- endif %}
                 <!-- {%- if entry.supp %}
                 {%- assign supp_entries = entry.supp | split: "," | map: "strip" -%}
                 {%- if supp_entries.size == 1 -%}
@@ -173,10 +154,20 @@
                 {%- endfor -%}
                 {%- endif -%}
                 {% endif %} -->
-            </ul>
-            <br>
+                </span>
+            </div>
 
-            <pre id="{{key}}-bibtex" class="pre pre-scrollable collapse">{{entry.bibtex}}</pre>
+            {%- if entry.abstract %}
+            <p id="{{key}}-abstract" class="collapse pub-abstract">{{entry.abstract}}</p>
+            {%- endif %}
+
+            <div id="{{key}}-bibtex" class="bibtex-block collapse">
+                <button type="button" class="bibtex-copy" data-copy-target="{{key}}-bibtex-text"
+                    aria-label="Copy BibTeX" title="Copy BibTeX">
+                    <i class="fa-regular fa-copy"></i>
+                </button>
+                <pre id="{{key}}-bibtex-text" class="pre pre-scrollable">{{entry.bibtex}}</pre>
+            </div>
 
         </div>
     </div>
@@ -205,9 +196,6 @@
         {%- continue -%}
         {%- endif -%}
         {%- assign keyword_lc = keyword_clean | downcase -%}
-        {%- if site.filtered_bibtex_keywords and site.filtered_bibtex_keywords contains keyword_lc -%}
-        {%- continue -%}
-        {%- endif -%}
         {%- assign keyword_style = keyword_color_map[keyword_lc] -%}
         {%- if keyword_style == nil -%}
         {%- continue -%}

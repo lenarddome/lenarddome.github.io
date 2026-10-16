@@ -5,9 +5,12 @@ github_users:
 # _plugins/github_repos.rb) - only set one when the repo is actually
 # published there under that exact name. Leave both off for repos with no
 # package registry (e.g. clobe), the card just omits the download count.
+# `homepage` sets the card's [website] link when the repo's GitHub "Website"
+# field is empty or points somewhere else.
 github_repos:
   - repo: lenarddome/psp
     cran: psp
+    homepage: https://lenarddome.com/psp/
   - repo: DevComPsy/cpm
     pypi: cpm-toolbox
   - repo: lenarddome/clobe

@@ -10,17 +10,17 @@ layout: default
 
   <article>
     {%- if page.profile %}
-    <div style="text-align: center; margin-bottom: 1.5rem;">
+    <div class="home-profile">
       {%- if page.profile.image %}
       {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
       {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
       {%- assign profile_image_alt = site.first_name | append: ' ' | append: site.last_name -%}
-      <div style="display: inline-block; max-width: 160px;">
+      <div class="home-profile-image">
         {% include figure.html path=profile_image_path class=profile_image_class alt=profile_image_alt %}
       </div>
       {%- endif %}
 
-      <div style="margin-top: 0.75rem; font-size: 0.85em; line-height: 1.9; color: var(--global-text-color);">
+      <div class="home-profile-details">
         {%- if page.profile.position %}
         <div><strong>{{ page.profile.position }}</strong></div>
         {%- endif %}
@@ -28,12 +28,12 @@ layout: default
         <div>{{ page.profile.affiliation }}</div>
         {%- endif %}
         {%- if page.profile.email %}
-        <div style="color: var(--global-text-color-light); font-size: 0.9em;">{{ page.profile.email }}</div>
+        <div class="home-profile-email">{{ page.profile.email }}</div>
         {%- endif %}
       </div>
 
       {%- if page.social %}
-      <div class="social" style="margin-top: 0.75rem;">
+      <div class="social">
         <div class="contact-icons">
           {% include social.html %}
         </div>
@@ -42,18 +42,23 @@ layout: default
     </div>
     {%- endif %}
 
-    <div style="margin-bottom: 2rem;">
-      {{ content }}
+    <div class="home-intro terminal">
+      <div class="terminal-bar" aria-hidden="true">
+        <span class="terminal-title">~/about.md</span>
+        <span class="terminal-buttons"><span>_</span><span>&#9633;</span><span>&times;</span></span>
+      </div>
+      <div class="terminal-body">
+        <p class="terminal-prompt" aria-hidden="true">cat about.md</p>
+        {{ content }}
+      </div>
     </div>
 
-
-    <div class="publications" style="margin: 1.5em auto; max-width: 1000px;">
-      <h1>Publications</h1>
-      <br>
-      <ol style="padding-left: 0;">
-        {% bibliography -f papers --template bib_apa %}
-      </ol>
+    <div class="publications home-publications">
+      <h2>Publications</h2>
+      {% bibliography -f papers --template bib_apa %}
     </div>
+
+    <hr class="home-divider">
 
     {% include animations.html %}
 

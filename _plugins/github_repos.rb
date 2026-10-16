@@ -18,7 +18,8 @@ module Jekyll
   # Exposes site.data['github_repos'] - one entry per repo, in the same
   # order, with 'stars', 'description', 'language', 'license', 'html_url',
   # 'homepage', 'downloads' and 'downloads_source' ("CRAN"/"PyPI", or nil
-  # when no registry is declared or the count wasn't available).
+  # when no registry is declared or the count wasn't available). A repo's
+  # `homepage:` in _data/repositories.yml overrides GitHub's.
   #
   # Network calls happen once per build. A local cache
   # (.jekyll-cache/github_repos.json) is read as a fallback whenever a call
@@ -47,6 +48,10 @@ module Jekyll
         downloads['downloads'] ||= cached['downloads']
         downloads['downloads_formatted'] ||= cached['downloads_formatted']
         downloads['downloads_source'] ||= cached['downloads_source']
+
+        # A `homepage:` in _data/repositories.yml wins over the repo's
+        # GitHub "Website" field, for projects whose site isn't set there.
+        github = github.merge('homepage' => entry['homepage']) if entry.is_a?(Hash) && entry['homepage']
 
         github.merge(downloads).merge('slug' => slug)
       end

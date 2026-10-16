@@ -15,6 +15,7 @@
     <title>
     {%- if site.title == "blank" -%}
         {%- capture title -%}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{%- endcapture -%}
+        {%- assign title = title | split: " " | join: " " -%}
     {%- else -%}
         {%- capture title -%}{{ site.title }}{%- endcapture -%}
     {%- endif -%}
@@ -54,6 +55,9 @@
     <meta name="citation_pdf_url" content="{{ page.citation_pdf_url }}" />
     {%- endif %}
     <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}" />
+    {%- if page.json_ld %}
+    <script type="application/ld+json">{{ page.json_ld }}</script>
+    {%- endif %}
 {%- endif %}
 
 {%- if site.serve_og_meta %}
@@ -61,7 +65,7 @@
     <!-- OpenGraph -->
     <meta property="og:site_name" content="{{ title }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="{%- if page.title -%}{{ title }} | {{ page.title }}{%- else -%}{{ title }}{%- endif -%}" />
+    <meta property="og:title" content="{%- if page.title and page.url != "/" -%}{{ title }} | {{ page.title }}{%- else -%}{{ title }}{%- endif -%}" />
     <meta property="og:url" content="{{ page.url | replace: 'index.html', '' | absolute_url }}" />
     <meta property="og:description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}" />
     {% if page.og_image or site.og_image -%}
@@ -71,7 +75,7 @@
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{%- if page.title -%}{{ page.title }}{%- else -%}{{ title }}{%- endif -%}" />
+    <meta name="twitter:title" content="{%- if page.title and page.url != "/" -%}{{ page.title }}{%- else -%}{{ title }}{%- endif -%}" />
     <meta name="twitter:description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}" />
     {% if page.og_image or site.og_image -%}
     <meta name="twitter:image" content="{%- if page.og_image -%}{{ page.og_image }}{%- else -%}{{ site.og_image }}{%- endif -%}" />
@@ -178,7 +182,7 @@
         "url": "{{ page.url | replace: 'index.html', '' | absolute_url }}",
         "@type": "WebSite",
         "description": "{%- if page.description -%}{{ page.description }}{%- elsif site.description -%}{{ site.description }}{%- endif -%}",
-        "headline": "{%- if page.title -%}{{ page.title }}{%- else -%}{{ site.title }}{%- endif -%}",
+        "headline": "{%- if page.title and page.url != "/" -%}{{ page.title }}{%- else -%}{{ title }}{%- endif -%}",
         {% if sameaslinks != blank -%}
         "sameAs": {{ sameaslinks }}, 
         {%- endif %}

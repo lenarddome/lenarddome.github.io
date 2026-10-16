@@ -1,11 +1,12 @@
 {%- assign histogram = site.data.keyword_histogram -%}
 {%- if histogram and histogram.size > 0 -%}
 {%- assign max_count = histogram[0].count -%}
-<div class="keyword-histogram">
-  <div class="keyword-histogram-head">
+<details class="keyword-histogram">
+  <summary class="keyword-histogram-head">
     <span class="keyword-histogram-title">keywords across publications</span>
-    <span class="keyword-histogram-hint">click a bar to filter the list below&mdash;click again to clear</span>
-  </div>
+    <span class="keyword-histogram-toggle" aria-hidden="true"></span>
+  </summary>
+  <p class="keyword-histogram-hint">click a bar to filter the list below&mdash;click again to clear</p>
   <div class="keyword-histogram-grid">
     {%- for item in histogram -%}
     {%- assign style = site.data.keyword_colors[item.keyword] -%}
@@ -21,5 +22,5 @@
     </button>
     {%- endfor -%}
   </div>
-</div>
+</details>
 {%- endif -%}

@@ -1,0 +1,10 @@
+{%- comment -%}
+  Number for a publication-list entry, counting down from the total so a
+  paper keeps its number as new ones are added. `index` is the entry's
+  1-based position, as jekyll-scholar passes it to the entry template.
+{%- endcomment -%}
+{%- assign pub_total = site.data.publication_count | default: 0 -%}
+{%- if pub_total > 0 -%}
+{%- assign pub_n = pub_total | minus: include.index | plus: 1 -%}
+<span class="pub-num" aria-hidden="true">{% if pub_n < 10 %}0{% endif %}{{ pub_n }}</span>
+{%- endif -%}

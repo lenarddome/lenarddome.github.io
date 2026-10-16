@@ -1,19 +1,50 @@
 <div align="center" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; margin-bottom: 24px;">
    <div style="display: flex; flex-direction: column; align-items: center;">
       <div style="font-weight:bold; margin-bottom:4px;">Game of Life</div>
-      <canvas id="gameOfLife" width="300" height="300" style="border:1px solid #ccc;"></canvas>
+      <canvas id="gameOfLife" width="300" height="300" style="border:1px solid var(--global-divider-color);"></canvas>
    </div>
    <div style="display: flex; flex-direction: column; align-items: center;">
       <div style="font-weight:bold; margin-bottom:4px;">Boids Swarm</div>
-      <canvas id="swarmCanvas" width="300" height="300" style="border:1px solid #ccc;"></canvas>
+      <canvas id="swarmCanvas" width="300" height="300" style="border:1px solid var(--global-divider-color);"></canvas>
    </div>
    <div style="display: flex; flex-direction: column; align-items: center;">
       <div style="font-weight:bold; margin-bottom:4px;">Neural Network</div>
-      <canvas id="nnCanvas" width="300" height="300" style="border:1px solid #ccc; margin-top:0;"></canvas>
+      <canvas id="nnCanvas" width="300" height="300" style="border:1px solid var(--global-divider-color); margin-top:0;"></canvas>
    </div>
 </div>
 
 <script>
+// Runs `frame` on every animation frame, but only while the canvas is on
+// screen. Visitors who prefer reduced motion get a single still frame.
+function animateWhenVisible(canvas, frame) {
+   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+   let visible = false;
+   let rafId = null;
+
+   function tick() {
+      frame();
+      rafId = requestAnimationFrame(tick);
+   }
+
+   function update() {
+      const run = visible && !reducedMotion.matches;
+      if (run && rafId === null) {
+         rafId = requestAnimationFrame(tick);
+      } else if (!run && rafId !== null) {
+         cancelAnimationFrame(rafId);
+         rafId = null;
+      }
+   }
+
+   frame();
+   new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      update();
+   }).observe(canvas);
+   reducedMotion.addEventListener('change', update);
+}
+
+(function () {
 const canvas = document.getElementById('gameOfLife');
 const ctx = canvas.getContext('2d');
 const size = 40; // 40x40 grid
@@ -28,11 +59,13 @@ for (let y = 0; y < size; y++) {
 }
 
 function draw() {
+   // Dead cells stay transparent so the page background (light or dark)
+   // shows through; live cells follow the theme's text colour.
    ctx.clearRect(0, 0, canvas.width, canvas.height);
+   ctx.fillStyle = getComputedStyle(canvas).getPropertyValue('--global-text-color').trim();
    for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
-         ctx.fillStyle = grid[y][x] ? '#222' : '#fff';
-         ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+         if (grid[y][x]) ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
       }
    }
 }
@@ -60,136 +93,128 @@ function nextGen() {
    grid = next;
 }
 
-function loop() {
+animateWhenVisible(canvas, function () {
    draw();
    nextGen();
-   requestAnimationFrame(loop);
+});
+})();
+
+(function () {
+const swarmCanvas = document.getElementById('swarmCanvas');
+const swarmCtx = swarmCanvas.getContext('2d');
+const swarmSize = 50;
+const boids = [];
+
+function randomVec() {
+   const angle = Math.random() * 2 * Math.PI;
+   return {x: Math.cos(angle), y: Math.sin(angle)};
 }
 
-loop();
-</script>
+for (let i = 0; i < swarmSize; i++) {
+   boids.push({
+      x: Math.random() * swarmCanvas.width,
+      y: Math.random() * swarmCanvas.height,
+      vx: (Math.random() - 0.5) * 2,
+      vy: (Math.random() - 0.5) * 2
+   });
+}
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-   const swarmCanvas = document.getElementById('swarmCanvas');
-   const swarmCtx = swarmCanvas.getContext('2d');
-   const swarmSize = 50;
-   const boids = [];
+function distance(a, b) {
+   return Math.hypot(a.x - b.x, a.y - b.y);
+}
 
-   function randomVec() {
-      const angle = Math.random() * 2 * Math.PI;
-      return {x: Math.cos(angle), y: Math.sin(angle)};
-   }
+function updateBoids() {
+   const alignDist = 40, cohDist = 40, sepDist = 20;
+   const alignWeight = 1, cohWeight = 0.5, sepWeight = 1.5, maxSpeed = 2;
 
-   for (let i = 0; i < swarmSize; i++) {
-      boids.push({
-         x: Math.random() * swarmCanvas.width,
-         y: Math.random() * swarmCanvas.height,
-         vx: (Math.random() - 0.5) * 2,
-         vy: (Math.random() - 0.5) * 2
-      });
-   }
+   for (let i = 0; i < boids.length; i++) {
+      let align = {x: 0, y: 0}, coh = {x: 0, y: 0}, sep = {x: 0, y: 0};
+      let totalAlign = 0, totalCoh = 0, totalSep = 0;
+      const b = boids[i];
 
-   function distance(a, b) {
-      return Math.hypot(a.x - b.x, a.y - b.y);
-   }
+      for (let j = 0; j < boids.length; j++) {
+         if (i === j) continue;
+         const other = boids[j];
+         const d = distance(b, other);
 
-   function updateBoids() {
-      const alignDist = 40, cohDist = 40, sepDist = 20;
-      const alignWeight = 1, cohWeight = 0.5, sepWeight = 1.5, maxSpeed = 2;
-
-      for (let i = 0; i < boids.length; i++) {
-         let align = {x: 0, y: 0}, coh = {x: 0, y: 0}, sep = {x: 0, y: 0};
-         let totalAlign = 0, totalCoh = 0, totalSep = 0;
-         const b = boids[i];
-
-         for (let j = 0; j < boids.length; j++) {
-            if (i === j) continue;
-            const other = boids[j];
-            const d = distance(b, other);
-
-            if (d < alignDist) {
-               align.x += other.vx;
-               align.y += other.vy;
-               totalAlign++;
-            }
-            if (d < cohDist) {
-               coh.x += other.x;
-               coh.y += other.y;
-               totalCoh++;
-            }
-            if (d < sepDist) {
-               sep.x += b.x - other.x;
-               sep.y += b.y - other.y;
-               totalSep++;
-            }
+         if (d < alignDist) {
+            align.x += other.vx;
+            align.y += other.vy;
+            totalAlign++;
          }
-
-         if (totalAlign) {
-            align.x /= totalAlign; align.y /= totalAlign;
-            const mag = Math.hypot(align.x, align.y) || 1;
-            align.x = (align.x / mag) * alignWeight;
-            align.y = (align.y / mag) * alignWeight;
+         if (d < cohDist) {
+            coh.x += other.x;
+            coh.y += other.y;
+            totalCoh++;
          }
-         if (totalCoh) {
-            coh.x = (coh.x / totalCoh - b.x) * cohWeight / 100;
-            coh.y = (coh.y / totalCoh - b.y) * cohWeight / 100;
-         }
-         if (totalSep) {
-            sep.x = (sep.x / totalSep) * sepWeight;
-            sep.y = (sep.y / totalSep) * sepWeight;
-         }
-
-         b.vx += align.x + coh.x + sep.x;
-         b.vy += align.y + coh.y + sep.y;
-
-         // Limit speed
-         const speed = Math.hypot(b.vx, b.vy);
-         if (speed > maxSpeed) {
-            b.vx = (b.vx / speed) * maxSpeed;
-            b.vy = (b.vy / speed) * maxSpeed;
+         if (d < sepDist) {
+            sep.x += b.x - other.x;
+            sep.y += b.y - other.y;
+            totalSep++;
          }
       }
 
-      // Move boids and wrap around edges
-      for (const b of boids) {
-         b.x += b.vx;
-         b.y += b.vy;
-         if (b.x < 0) b.x += swarmCanvas.width;
-         if (b.x > swarmCanvas.width) b.x -= swarmCanvas.width;
-         if (b.y < 0) b.y += swarmCanvas.height;
-         if (b.y > swarmCanvas.height) b.y -= swarmCanvas.height;
+      if (totalAlign) {
+         align.x /= totalAlign; align.y /= totalAlign;
+         const mag = Math.hypot(align.x, align.y) || 1;
+         align.x = (align.x / mag) * alignWeight;
+         align.y = (align.y / mag) * alignWeight;
+      }
+      if (totalCoh) {
+         coh.x = (coh.x / totalCoh - b.x) * cohWeight / 100;
+         coh.y = (coh.y / totalCoh - b.y) * cohWeight / 100;
+      }
+      if (totalSep) {
+         sep.x = (sep.x / totalSep) * sepWeight;
+         sep.y = (sep.y / totalSep) * sepWeight;
+      }
+
+      b.vx += align.x + coh.x + sep.x;
+      b.vy += align.y + coh.y + sep.y;
+
+      // Limit speed
+      const speed = Math.hypot(b.vx, b.vy);
+      if (speed > maxSpeed) {
+         b.vx = (b.vx / speed) * maxSpeed;
+         b.vy = (b.vy / speed) * maxSpeed;
       }
    }
 
-   function drawBoids() {
-      swarmCtx.clearRect(0, 0, swarmCanvas.width, swarmCanvas.height);
-      for (const b of boids) {
-         swarmCtx.save();
-         swarmCtx.translate(b.x, b.y);
-         swarmCtx.rotate(Math.atan2(b.vy, b.vx));
-         swarmCtx.beginPath();
-         swarmCtx.moveTo(8, 0);
-         swarmCtx.lineTo(-6, 4);
-         swarmCtx.lineTo(-6, -4);
-         swarmCtx.closePath();
-         swarmCtx.fillStyle = "#0074D9";
-         swarmCtx.fill();
-         swarmCtx.restore();
-      }
+   // Move boids and wrap around edges
+   for (const b of boids) {
+      b.x += b.vx;
+      b.y += b.vy;
+      if (b.x < 0) b.x += swarmCanvas.width;
+      if (b.x > swarmCanvas.width) b.x -= swarmCanvas.width;
+      if (b.y < 0) b.y += swarmCanvas.height;
+      if (b.y > swarmCanvas.height) b.y -= swarmCanvas.height;
    }
+}
 
-   function swarmLoop() {
-      updateBoids();
-      drawBoids();
-      requestAnimationFrame(swarmLoop);
+function drawBoids() {
+   swarmCtx.clearRect(0, 0, swarmCanvas.width, swarmCanvas.height);
+   for (const b of boids) {
+      swarmCtx.save();
+      swarmCtx.translate(b.x, b.y);
+      swarmCtx.rotate(Math.atan2(b.vy, b.vx));
+      swarmCtx.beginPath();
+      swarmCtx.moveTo(8, 0);
+      swarmCtx.lineTo(-6, 4);
+      swarmCtx.lineTo(-6, -4);
+      swarmCtx.closePath();
+      swarmCtx.fillStyle = "#0074D9";
+      swarmCtx.fill();
+      swarmCtx.restore();
    }
+}
 
-   swarmLoop();
+animateWhenVisible(swarmCanvas, function () {
+   updateBoids();
+   drawBoids();
 });
-</script>
+})();
 
-<script>
+(function () {
 // Neural network with pulsing (spiking) neurons
 const nnCanvas = document.getElementById('nnCanvas');
 const nnCtx = nnCanvas.getContext('2d');
@@ -310,11 +335,9 @@ function updateNeuralNet() {
   }
 }
 
-function nnLoop() {
+animateWhenVisible(nnCanvas, function () {
   updateNeuralNet();
   drawNeuralNet();
-  requestAnimationFrame(nnLoop);
-}
-
-nnLoop();
+});
+})();
 </script>

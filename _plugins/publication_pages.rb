@@ -1,4 +1,5 @@
 require 'bibtex'
+require 'json'
 
 module Jekyll
   # Generates one standalone page per publication at /publications/<key>/,
@@ -21,7 +22,13 @@ module Jekyll
       bib_path = File.join(site.source, source_dir.sub(%r{\A/}, ''), bib_file)
       return unless File.exist?(bib_path)
 
-      BibTeX.open(bib_path).each do |entry|
+      bibliography = BibTeX.open(bib_path)
+
+      # Total for the numbered publication lists, which count down so each
+      # paper keeps its number when a new one is added (_includes/pub_number.html).
+      site.data['publication_count'] = bibliography.count { |e| e.is_a?(BibTeX::Entry) }
+
+      bibliography.each do |entry|
         next unless entry.is_a?(BibTeX::Entry)
 
         key = entry.key.to_s
@@ -72,7 +79,18 @@ module Jekyll
           'citation_venue' => venue,
           'citation_date' => citation_date,
           'citation_doi' => doi,
-          'citation_pdf_url' => citation_pdf_url
+          'citation_pdf_url' => citation_pdf_url,
+          'json_ld' => json_ld(
+            url: site.config['url'].to_s + "/publications/#{key}/",
+            title: title,
+            authors: authors.map { |n| [n.first, n.last].reject { |s| s.to_s.empty? }.join(' ') },
+            venue: venue,
+            is_conference: is_conference,
+            year: year,
+            pages: entry[:pages] ? entry[:pages].to_s : nil,
+            doi: doi,
+            abstract: clean(entry[:abstract])
+          )
         )
         site.pages << page
       end
@@ -104,6 +122,30 @@ module Jekyll
     def clean(value)
       return '' if value.nil?
       value.to_s.gsub(/[{}]/, '').gsub(/\s+/, ' ').strip
+    end
+
+    # schema.org ScholarlyArticle, emitted as JSON-LD by _includes/metadata.html.
+    def json_ld(url:, title:, authors:, venue:, is_conference:, year:, pages:, doi:, abstract:)
+      data = {
+        '@context' => 'https://schema.org',
+        '@type' => 'ScholarlyArticle',
+        'headline' => title,
+        'name' => title,
+        'url' => url,
+        'author' => authors.map { |name| { '@type' => 'Person', 'name' => name } }
+      }
+      data['datePublished'] = year if year
+      unless venue.empty?
+        data['isPartOf'] = { '@type' => is_conference ? 'Book' : 'Periodical', 'name' => venue }
+      end
+      data['pagination'] = pages if pages
+      if doi
+        data['identifier'] = { '@type' => 'PropertyValue', 'propertyID' => 'DOI', 'value' => doi }
+        data['sameAs'] = "https://doi.org/#{doi}"
+      end
+      data['abstract'] = abstract unless abstract.empty?
+      # "</" would end the surrounding <script> element early.
+      JSON.generate(data).gsub('</', '<\\/')
     end
 
     def direct_pdf_url?(url)

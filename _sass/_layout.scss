@@ -140,13 +140,23 @@ body.sticky-bottom-footer {
   border: 1px solid var(--global-divider-color);
 }
 
+// The panel is a <details> that starts closed; the head is its <summary>.
 .keyword-histogram-head {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.keyword-histogram[open] .keyword-histogram-head {
+  margin-bottom: 0.5rem;
 }
 
 .keyword-histogram-title {
@@ -156,6 +166,7 @@ body.sticky-bottom-footer {
 }
 
 .keyword-histogram-hint {
+  margin-bottom: 0.75rem;
   font-size: 0.75rem;
   color: var(--global-text-color-light);
 }

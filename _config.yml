@@ -87,11 +87,8 @@ bluesky_username:  # your Bluesky handle (without @, e.g. lenarddome)
 contact_note:
 
 # -----------------------------------------------------------------------------
-# Analytics and search engine verification
+# Search engine verification
 # -----------------------------------------------------------------------------
-
-google_analytics: G-RQSNZZYXH5 # your google-analytics ID (format: UA-XXXXXXXXX)
-panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
 
 google_site_verification:  # your google-site-verification ID (Google Search Console)
 bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
@@ -239,8 +236,9 @@ scholar:
 
   enable_publication_thumbnails: true
 
-  # Filter out certain bibtex entry keywords used internally from the bib output
-  filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, preview]
+  # Fields used only by this site (buttons, keyword dots, previews), left out
+  # of the BibTeX shown and copied on the publications page
+  bibtex_skip_fields: [abstract, month_numeric, abbr, bibtex_show, copyright, figshare, first_author, gist, keywords, osf, pdf, preview, selected, supp, urldate]
 
   # Maximum number of authors to be shown, other authors will be visible on hover, leave blank to show all authors
   max_author_limit: 10
@@ -269,12 +267,8 @@ imagemagick:
 # Optional Features
 # -----------------------------------------------------------------------------
 
-enable_google_analytics:    true  # enables google analytics
-enable_panelbear_analytics: false  # enables panelbear analytics
 enable_google_verification: false  # enables google site verification
 enable_bing_verification:   false  # enables bing site verification
-enable_tooltips:            false  # enables automatic tooltip links generated
-                                   # for each section titles on pages and posts
 enable_darkmode:            true   # enables switching between light/dark modes
 enable_navbar_social:       false  # enables displaying social links in the
                                    # navbar on the about page
@@ -285,21 +279,5 @@ enable_medium_zoom:         true   # enables image zoom feature (as on medium.co
 # Library versions
 # -----------------------------------------------------------------------------
 
-bootstrap:
-  version: "4.6.1"
-  integrity:
-    css: "sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
-    js: "sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8="
-jquery:
-  version: "3.6.0"
-  integrity: "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 mathjax:  # only loaded on pages with `math: true` in their front matter
   version: "3.2.0"
-mdb:
-  version: "4.20.0"
-  integrity:
-    css: "sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
-    js: "sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
-medium_zoom:
-  version: "1.0.6"
-  integrity: "sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM="

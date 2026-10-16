@@ -11,7 +11,7 @@ nav_order: 5
 
 A brief promotional video featuring lab head [Prof. Andy Wills](https://www.andywills.info) introducing our work in the lab and myself showcasing some of my research.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LQwjDjPg2rA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/LQwjDjPg2rA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
@@ -20,4 +20,4 @@ A brief promotional video featuring lab head [Prof. Andy Wills](https://www.andy
 A pre-recorded presentation for the 2021 meeting of the Experimental Psychological Society about my final-year undergraduate research project.
 The project won the BSA/EPS Undergraduate Project Prize.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/poKuu_-0e3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/poKuu_-0e3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
