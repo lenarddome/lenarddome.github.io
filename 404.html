@@ -1,9 +1,32 @@
 ---
-layout: page
+layout: default
 permalink: /404.html
-title: "Page not found"
-description: "Looks like there has been a mistake. Nothing exists here."
-redirect: true
+title: "404"
+description: page not found
 ---
 
-<p>You will be redirected to the main page within 3 seconds. If not redirected, please click <a href="{{ site.baseurl | prepend: site.url }}/">here</a>.</p>
+<div class="post">
+  <article>
+    <div class="terminal dead-channel">
+      <div class="terminal-bar" aria-hidden="true">
+        <span class="terminal-title">CH 404</span>
+        <span class="terminal-buttons"><span>_</span><span>&#9633;</span><span>&times;</span></span>
+      </div>
+      <div class="dead-channel-screen" aria-hidden="true">
+        <span class="dead-channel-label">NO SIGNAL</span>
+      </div>
+      <figure class="dead-channel-quote">
+        <blockquote>The sky above the port was the color of television, tuned to a dead channel.</blockquote>
+        <figcaption>William Gibson, <cite>Neuromancer</cite></figcaption>
+      </figure>
+    </div>
+
+    <p class="dead-channel-home"><a href="{{ '/' | relative_url }}">back to the homepage</a></p>
+  </article>
+</div>
+
+<div class="social">
+  <div class="contact-icons">
+  {% include social.html %}
+  </div>
+</div>

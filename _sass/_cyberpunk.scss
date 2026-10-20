@@ -76,10 +76,12 @@ a:hover {
   }
 }
 
-// Headings: "> title" prompt, blinking block cursor, pink-to-cyan rule.
+// Headings: "> title" prompt, pink-to-cyan rule, and on page titles a
+// blinking block cursor. The landing page's heading has no cursor, since
+// the terminal above it already has one.
 
 .post-title,
-.home-publications h2 {
+.home-publications h1 {
   font-family: $font-mono;
   font-weight: 400;
   padding-bottom: 0.4rem;
@@ -90,14 +92,14 @@ a:hover {
     content: "> ";
     color: var(--global-theme-color);
   }
-
-  &::after {
-    font-size: 0.8em;
-    @include cursor("\2588");
-  }
 }
 
-.home-publications h2 {
+.post-title::after {
+  font-size: 0.8em;
+  @include cursor("\2588");
+}
+
+.home-publications h1 {
   font-size: 1.9rem;
 }
 
@@ -455,21 +457,97 @@ a:hover {
   }
 }
 
+// Shell session around the text: a login line, the command, and an idle
+// prompt with the blinking cursor once the file has been printed.
+.terminal-login,
 .terminal-prompt {
-  margin-bottom: 0.75rem;
   font-family: $font-mono;
   font-size: 0.85rem;
   color: var(--global-text-color-light);
+}
 
-  &::before {
-    content: "$ ";
-    color: var(--global-theme-color);
+.terminal-login {
+  margin-bottom: 0.25rem;
+
+  .terminal-tty {
+    color: inherit;
+
+    // Keeps the line from wrapping on phones.
+    @media (max-width: 575.98px) {
+      display: none;
+    }
+  }
+}
+
+.terminal-prompt {
+  margin-bottom: 0.75rem;
+}
+
+.terminal-user {
+  color: var(--global-theme-color);
+}
+
+.terminal-path {
+  color: var(--global-accent-color);
+}
+
+.terminal-idle::after {
+  @include cursor("\2588");
+}
+
+// While the command is typed (script in _layouts/about.html) the cursor
+// follows it, held solid as it is in a real terminal, and the output and
+// idle prompt wait. opacity keeps their space, so nothing below moves, and
+// unlike visibility it isn't inherited, so the links' transition (on all
+// properties, _framework.scss) can't leave them hidden.
+.terminal.is-typing {
+  .terminal-command::after {
+    content: "\2588";
+    margin-left: 0.1em;
+    color: var(--global-accent-color);
+  }
+
+  .terminal-output,
+  .terminal-idle {
+    opacity: 0;
+  }
+}
+
+// tmux status line along the bottom edge, in the title bar's colours.
+.terminal-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.2rem 0.75rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--global-bg-color);
+  background: var(--global-text-color);
+
+  // _base.scss gives every span the body text colour.
+  span {
+    color: inherit;
+  }
+
+  // The background windows don't fit beside the clock on narrow screens,
+  // and on phones the date goes too.
+  @media (max-width: 767.98px) {
+    .terminal-windows {
+      display: none;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .terminal-date {
+      display: none;
+    }
   }
 }
 
 // References in the landing-page intro: [arXiv:2608.06149], matching the
 // [abstract] [bibtex] links on the publications page.
-.terminal-body p:not(.terminal-prompt) a {
+.terminal-output p a {
   font-family: $font-mono;
   font-size: 0.85em;
   white-space: nowrap;
@@ -525,4 +603,94 @@ a:hover {
 
   &::before { content: "["; color: var(--global-text-color-light); }
   &::after { content: "]"; color: var(--global-text-color-light); }
+}
+
+// 404 page (404.html): a dead channel. A screen of TV static in the same
+// 90s window as the landing-page intro, then Neuromancer's opening line.
+
+// Offsets are multiples of the 3px noise pixel, so the blocks stay sharp.
+// Photosensitivity: the static changes 2.5 times a second (2s, 5 steps),
+// under WCAG's three-flashes-a-second limit, and the tile's greys are kept
+// mid-range (70-185 of 255). Keep both if this is changed.
+@keyframes dead-channel-static {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-96px, 63px); }
+  40% { transform: translate(51px, -129px); }
+  60% { transform: translate(-147px, -27px); }
+  80% { transform: translate(111px, 87px); }
+}
+
+.dead-channel {
+  max-width: 40rem;
+  margin: 1.5rem auto 2rem;
+}
+
+.dead-channel-screen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15rem;
+  overflow: hidden;
+  background: #111;
+
+  // The static is a 64px tile of random grey pixels, drawn at 3px a pixel,
+  // on a layer bigger than the screen that jumps to a new offset (see the
+  // photosensitivity note on the keyframes).
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -160px;
+    background: url("../img/tv-static.png") 0 0 / 192px 192px repeat;
+    image-rendering: pixelated;
+    animation: dead-channel-static 2s steps(1) infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}
+
+.dead-channel-label {
+  position: relative;
+  padding: 0.3rem 0.75rem;
+  font-family: $font-mono;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: #fff;
+  background: #000;
+}
+
+.dead-channel-quote {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  border-top: 2px solid var(--global-text-color);
+
+  blockquote {
+    margin: 0 0 0.75rem;
+    padding: 0 0 0 1rem;
+    line-height: 1.5;
+    // .post justifies text, which opens wide gaps on phones.
+    text-align: left;
+  }
+
+  figcaption {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+
+    &::before {
+      content: "// ";
+      color: var(--global-accent-color);
+    }
+  }
+}
+
+.dead-channel-home {
+  font-family: $font-mono;
+  font-size: 0.9rem;
+  text-align: center;
+
+  a::before { content: "["; color: var(--global-text-color-light); }
+  a::after { content: "]"; color: var(--global-text-color-light); }
 }

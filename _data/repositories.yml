@@ -11,8 +11,11 @@ github_repos:
   - repo: lenarddome/psp
     cran: psp
     homepage: https://lenarddome.com/psp/
+  - repo: lenarddome/psp-torch
+    pypi: psp-torch
+    homepage: https://lenarddome.com/psp-torch/
   - repo: DevComPsy/cpm
     pypi: cpm-toolbox
-  - repo: lenarddome/clobe
+    homepage: https://devcomppsy.github.io/cpm/
   - repo: ajwills72/catlearn
     cran: catlearn

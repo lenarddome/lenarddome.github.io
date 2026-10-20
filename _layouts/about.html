@@ -44,17 +44,53 @@ layout: default
 
     <div class="home-intro terminal">
       <div class="terminal-bar" aria-hidden="true">
-        <span class="terminal-title">~/about.md</span>
+        <span class="terminal-title">lenard@tuebingen: ~</span>
         <span class="terminal-buttons"><span>_</span><span>&#9633;</span><span>&times;</span></span>
       </div>
       <div class="terminal-body">
-        <p class="terminal-prompt" aria-hidden="true">cat about.md</p>
-        {{ content }}
+        <p class="terminal-login" aria-hidden="true">Last login: {{ site.time | date: "%a %b %-d %H:%M" }}<span class="terminal-tty"> on ttys001</span></p>
+        <p class="terminal-prompt" aria-hidden="true"><span class="terminal-user">lenard@tuebingen</span>:<span class="terminal-path">~</span>$ <span class="terminal-command">cat about.md</span></p>
+        <div class="terminal-output">
+          {{ content }}
+        </div>
+        <p class="terminal-prompt terminal-idle" aria-hidden="true"><span class="terminal-user">lenard@tuebingen</span>:<span class="terminal-path">~</span>$ </p>
+      </div>
+      <div class="terminal-status" aria-hidden="true">
+        <span>[sprawl] 0:bash*<span class="terminal-windows"> 1:wintermute 2:neuromancer</span></span>
+        <span>"tuebingen" {{ site.time | date: "%H:%M" }}<span class="terminal-date"> {{ site.time | date: "%d-%b-%y" }}</span></span>
       </div>
     </div>
+    <script>
+      // Types the command, then prints about.md: once per session, and not at
+      // all with reduced motion or without JS. Runs inline, right after the
+      // window, so the text is hidden before it is first painted.
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        try {
+          if (sessionStorage.getItem('about-typed')) return;
+          sessionStorage.setItem('about-typed', '1');
+        } catch (e) {}
+
+        const terminal = document.currentScript.previousElementSibling;
+        const command = terminal.querySelector('.terminal-command');
+        const text = command.textContent;
+        let typed = 0;
+
+        terminal.classList.add('is-typing');
+        command.textContent = '';
+        setTimeout(function type() {
+          command.textContent = text.slice(0, ++typed);
+          if (typed < text.length) {
+            setTimeout(type, 50 + Math.random() * 70);
+          } else {
+            setTimeout(function () { terminal.classList.remove('is-typing'); }, 300);
+          }
+        }, 500);
+      })();
+    </script>
 
     <div class="publications home-publications">
-      <h2>Publications</h2>
+      <h1>Publications</h1>
       {% bibliography -f papers --template bib_apa %}
     </div>
 
